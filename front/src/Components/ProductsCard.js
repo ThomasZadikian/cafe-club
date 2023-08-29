@@ -31,7 +31,7 @@ const ProductsCard = ({ data, error }) => {
               className="rounded-3xl md:w-1/3 md:h-96 w-11/12 h-64 mx-5 my-3"
             />
             <article className="flex flex-col items-center justify-center md:w-96 md:h-96 border-2 border-gold rounded-3xl my-3 mx-5">
-              <h1 className="my-3 text-2xl font-bold">
+              <h1 className="my-3 text-2xl font-bold border-y-2 border-gold p-2">
                 {product.product_name}
               </h1>
               <p className="m-3 text-justify">{product.description}</p>
