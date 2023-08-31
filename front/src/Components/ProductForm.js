@@ -97,20 +97,16 @@ const ProductForm = () => {
       });
   }, []);
 
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-
   return (
-    <div className="bg-white shadow-md rounded-lg p-8 max-w-md mx-auto mt-8">
-      <h2 className="text-2xl font-semibold mb-6">Ajoutez un produit</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="bg-dark border border-gold rounded-lg p-8 max-w-md mx-auto mt-8">
+      <h2 className="text-2xl font-semibold mb-6">
+        Formulaire d'ajout de produit
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-4 ">
         <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Nom du produit:
-          </label>
+          <label className="block font-medium mb-2">Nom du produit:</label>
           <input
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
             type="text"
             value={productName}
             onChange={(e) => setProductName(e.target.value)}
@@ -118,42 +114,40 @@ const ProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Description:
-          </label>
+          <label className="block font-medium mb-2">Description:</label>
           <textarea
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-medium mb-2">Prix:</label>
+          <label className="block font-medium mb-2">Prix:</label>
           <input
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Origine:
-          </label>
+          <label className="block font-medium mb-2">Origine:</label>
           <input
-            className="w-full border border-gray-300 px-3 py-2 rounded"
+            className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
             type="text"
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
           />
         </div>
         <div>
+          <label className="block font-medium mb-2">Type de produit:</label>
           {productsType.map((element) => (
-            <label key={element.id} className="block text-gray-700 font-medium">
+            <label key={element.id} className="block font-medium">
               <input
                 type="radio"
                 name="productType"
                 value={element.id}
+                className="mr-2"
                 onChange={() => setSelectedTypeId(element.id)}
               />
               {element.nom_type}

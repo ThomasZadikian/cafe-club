@@ -1,17 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ContactForm from "../Components/ContactForm";
+import ProductForm from "../Components/ProductForm";
 
-const ContactPage = () => {
+const AdminPage = () => {
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <ContactForm />
-    </motion.div>
+      <ProductForm />
+    </motion.main>
   );
 };
 
-export default ContactPage;
+export default AdminPage;

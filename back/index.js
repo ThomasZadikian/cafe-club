@@ -29,10 +29,3 @@ app.use((req, res, next) => {
 });
 
 const port = process.env.PORT || 3001;
-app.listen(port, (error) => {
-  if (error) {
-    console.error("Error starting the server:", error);
-  } else {
-    console.log(`Server is running on port ${port}`);
-  }
-});

@@ -16,7 +16,7 @@ const Navbar = () => {
             placeholder={"Pas encore fonctionnel"}
           />
         </div>
-        <ul className="md:flex mb:grid mb:grid-cols-2 gap-2 bg-background-dark p-2 mx-auto">
+        <ul className="md:flex mb:grid mb:grid-cols-2 gap-2 bg-background-dark p-2 mx-auto md:mt-2">
           <NavLink to={"/"} label={"Accueil"} />
           <NavLink to={"/shop"} label={"Nos produits"} />
           <NavLink to={"/contact"} label={"Contact"} />

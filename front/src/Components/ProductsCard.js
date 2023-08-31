@@ -11,7 +11,6 @@ const ProductsCard = ({ data, error, imageClassName, cardClassName, type }) => {
         </p>
       ) : null}
       {data.map((product) => {
-        console.log(product);
         const image = require("../Assets/Images/" +
           product.product_name +
           ".jpg");
