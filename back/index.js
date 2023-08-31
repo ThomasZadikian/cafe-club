@@ -5,6 +5,7 @@ const app = express();
 const productsRoutes = require("./controllers/ProductsController");
 const productsTypes = require("./controllers/ProductsTypeController");
 const products = require("./controllers/ProductsDisplayController");
+const productsType = require("./controllers/TypesController");
 
 app.use(express.json());
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(cors());
 app.use("/api/products", productsRoutes);
 app.use("/api/products", productsTypes);
 app.use("/api/products", products);
+app.use("/api/products", productsType);
 
 app.post("/api/products", (req, res) => {
   const { productName, description, price, origin } = req.body;

@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 
 const NavLink = ({ to, label }) => {
   const isActive = window.location.pathname === to;
-  const classNames = `bg-background-button flex items-center px-4 py-2 rounded-full mx-2 text-center ${
-    isActive ? "bg-gold text-black" : ""
-  }`;
   return (
-    <li className="flex w-full">
+    <li>
       <Link
         to={to}
-        className={`w-full h-full flex items-center justify-center ${classNames}`}
+        className={`bg-background-button justify-center flex items-center rounded-full text-center md:px-8 md:py-3 mb-2 py-3 ${
+          isActive ? "bg-gold text-black" : ""
+        }`}
       >
         {label}
       </Link>

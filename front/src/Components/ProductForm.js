@@ -11,9 +11,11 @@ const ProductForm = () => {
   const [selectedTypeId, setSelectedTypeId] = useState(null);
   const [productsType, setProductsType] = useState([]);
   const [products, setProducts] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(event) {
+    event.preventDefault();
+
     const productData = {
       productName,
       description,
@@ -21,20 +23,28 @@ const ProductForm = () => {
       origin,
       typeId: selectedTypeId,
     };
-    fetch("http://localhost:3001/api/products/insert", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(productData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/products/insert",
+        {
+          method: "POST",
+          body: productData,
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
         console.log(data.message);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de l'envoi des données :", error);
-      });
+      } else {
+        console.error(
+          "Erreur lors de l'envoi des données :",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'envoi des données :", error);
+    }
   }
 
   useEffect(() => {
@@ -86,6 +96,10 @@ const ProductForm = () => {
         setError(error.message);
       });
   }, []);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
 
   return (
     <div className="bg-white shadow-md rounded-lg p-8 max-w-md mx-auto mt-8">

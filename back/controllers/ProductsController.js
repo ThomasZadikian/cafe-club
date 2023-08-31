@@ -1,14 +1,19 @@
+const multer = require("multer");
+const path = require("path");
 const express = require("express");
 const router = express.Router();
 const db = require("../db/db");
 
-router.post("/insert", async (req, res) => {
+const upload = multer({ dest: "../../front/src/Assets/Images" });
+
+router.post("/insert", upload.single("file"), async (req, res) => {
   const { productName, description, price, origin, typeId } = req.body;
+  const imagePath = req.file.filename;
 
   const query = `
-    INSERT INTO products (nom_produit, description, prix, origine, id_type)
+    INSERT INTO products (product_name, description, price, origin, id_type)
     VALUES (?,?,?,?,?)
-    `;
+  `;
 
   db.execute(
     query,
