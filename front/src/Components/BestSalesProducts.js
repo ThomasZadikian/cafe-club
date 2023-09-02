@@ -4,6 +4,10 @@ import { useProduct } from "./ProductContext";
 
 const BestSalesProducts = () => {
   const { data, error } = useProduct();
+  data.map((product) => {
+    data.sort((a, b) => b.number_of_sales - a.number_of_sales);
+    product.index = data.indexOf(product);
+  });
   return (
     <section className="flex flex-col align-center mt-5">
       <p className="mx-5 border-x-2 border-b-2 border-gold p-3 rounded-full my-5 text-center md:mx-auto">

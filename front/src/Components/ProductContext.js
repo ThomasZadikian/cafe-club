@@ -8,7 +8,7 @@ export function useProduct() {
 
 export function ProductProvider({ children }) {
   const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState();
 
   useEffect(() => {
     fetch("http://localhost:3001/api/products/productsDisplay", {
@@ -19,7 +19,6 @@ export function ProductProvider({ children }) {
           console.error(
             "Erreur lors de la récupération des données, recherche de sauvegarde locale"
           );
-          setError(response);
         } else {
           return response.json();
         }
@@ -27,10 +26,11 @@ export function ProductProvider({ children }) {
       .catch(() => {
         return require("../db/db.json");
       })
-      .then((data) => {
+      .then((data, error) => {
         if (data.products) {
           // This case is for the .json files only
           setData(data.products);
+          setError(1);
         } else {
           // This case is for the API only
           setData(data);
