@@ -8,7 +8,7 @@ export function useProduct() {
 
 export function ProductProvider({ children }) {
   const [data, setData] = useState([]);
-  const [error, setError] = useState();
+  const [errorLocal, seterrorLocal] = useState();
   const [types, setTypes] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function ProductProvider({ children }) {
     })
       .then((response) => {
         if (!response.ok) {
-          console.error(
+          console.errorLocal(
             "Erreur lors de la récupération des données, recherche de sauvegarde locale"
           );
         } else {
@@ -27,11 +27,11 @@ export function ProductProvider({ children }) {
       .catch(() => {
         return require("../db/db.json");
       })
-      .then((data, error) => {
+      .then((data, errorLocal) => {
         if (data.products) {
           // This case is for the .json files only
           setData(data.products);
-          setError(1);
+          seterrorLocal(1);
         } else {
           // This case is for the API only
           setData(data);
@@ -51,7 +51,7 @@ export function ProductProvider({ children }) {
     promise1
       .then((response) => {
         if (!response.ok) {
-          console.error(
+          console.errorLocal(
             "Erreur lors de la récupération des données, recherche de sauvegarde locale"
           );
         } else {
@@ -61,11 +61,11 @@ export function ProductProvider({ children }) {
       .catch(() => {
         return require("../db/db.json");
       })
-      .then((data, error) => {
+      .then((data, errorLocal) => {
         if (data.products) {
           // This case is for the .json files only
           setData(data.products);
-          setError(1);
+          seterrorLocal(1);
         } else {
           // This case is for the API only
           setData(data);
@@ -75,7 +75,7 @@ export function ProductProvider({ children }) {
     promise2
       .then((response) => {
         if (!response) {
-          console.error(
+          console.errorLocal(
             "Erreur lors de la récupération des données, recherche de sauvegarde locale"
           );
         } else {
@@ -85,11 +85,11 @@ export function ProductProvider({ children }) {
       .catch(() => {
         return require("../db/db.json");
       })
-      .then((types, error) => {
+      .then((types, errorLocal) => {
         if (types.types) {
           // This case is for the .json files only
           setTypes(types.types);
-          setError(1);
+          seterrorLocal(1);
         } else {
           // This case is for the API only
           setTypes(types);
@@ -98,7 +98,7 @@ export function ProductProvider({ children }) {
   }, []);
 
   return (
-    <ProductContext.Provider value={{ data, error, types }}>
+    <ProductContext.Provider value={{ data, errorLocal, types }}>
       {children}
     </ProductContext.Provider>
   );

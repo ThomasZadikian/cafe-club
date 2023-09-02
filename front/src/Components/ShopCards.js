@@ -3,7 +3,12 @@ import ProductsCard from "./ProductsCard";
 import { useProduct } from "./ProductContext";
 
 const ShopCards = () => {
-  const { data, error, types } = useProduct();
+  const { data, types } = useProduct();
+
+  data.map((product) => {
+    data.sort((a, b) => b.number_of_sales - a.number_of_sales);
+    product.index = 1;
+  });
 
   return (
     <section className="flex flex-col align-center mt-5">
@@ -12,16 +17,15 @@ const ShopCards = () => {
           <>
             <p
               key={type.id}
-              className="mx-5 border-y border-gold p-3 my-5 mx-20 px-5 text-center"
+              className="mx-5 border-y border-gold p-3 my-5 md:mx-80 px-5 text-center text-2xl font-bold"
             >
               Nos {type.nom_type}s
             </p>
-            <article className="flex justify-center m-auto w-11/12 flex-wrap">
+            <article className="flex justify-center mx-auto w-10/12 flex-wrap">
               <ProductsCard
                 type={type.id}
-                data={data}
-                error={error}
-                imageClassName="rounded-3xl h-64 w-96 mx-auto my-3"
+                data={data.product ? data.products : data}
+                imageClassName={`rounded-3xl h-64 w-96 mx-auto my-3 `}
                 cardClassName="flex flex-col mx-2"
               />
             </article>
