@@ -21,7 +21,7 @@ const ShopCards = () => {
             >
               Nos {type.nom_type}s
             </p>
-            <article className="flex justify-center mx-auto w-10/12 flex-wrap">
+            <article className="flex justify-center mx-auto w-12/12 flex-wrap">
               <ProductsCard
                 type={type.id}
                 data={data.product ? data.products : data}
