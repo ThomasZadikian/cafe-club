@@ -4,12 +4,6 @@ import CartIcons from "./CartIcons";
 const ProductsCard = ({ data, error, imageClassName, cardClassName, type }) => {
   return (
     <>
-      {error ? (
-        <p className="border border-red-900 rounded-md bg-red-900 p-2">
-          Vous utilisez une version locale de la base de données, les données
-          pourraient ne pas correspondre parfaitement à ce qui est attendu.
-        </p>
-      ) : null}
       {data.map((product) => {
         const image = require("../Assets/Images/" +
           product.product_name +

@@ -7,12 +7,14 @@ import OrderPage from "../Pages/OrderPage";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import AdminPage from "../Pages/AdminPage";
+import ErrorDb from "./ErrorDb";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
     <>
       <Navbar />
+      <ErrorDb />
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />

@@ -1,53 +1,9 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import ProductsCard from "./ProductsCard";
+import { useProduct } from "./ProductContext";
 
 const ShopCards = () => {
-  const [error, setError] = useState("");
-  const [data, setData] = useState([]);
-  const [types, setTypes] = useState([]);
-
-  useEffect(() => {
-    const promise1 = fetch(
-      "http://localhost:3001/api/products/productsDisplay",
-      { method: "GET" }
-    );
-    const promise2 = fetch("http://localhost:3001/api/products/productsType", {
-      method: "GET",
-    });
-
-    promise1
-      .then((response) => {
-        if (!response) {
-          throw new Error("Aucune information serveur");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-        const sortedData = [...data];
-        sortedData.sort((a, b) => b.id_type - a.id_type);
-        setData(sortedData);
-      })
-      .catch((error) => {
-        setError(error);
-        throw new Error(error);
-      });
-
-    promise2
-      .then((response) => {
-        if (!response) {
-          throw new Error("Aucune information serveur");
-        }
-        return response.json();
-      })
-      .then((types) => {
-        setTypes(types);
-      })
-      .catch((error) => {
-        setError(error);
-        throw new Error(error);
-      });
-  }, []);
+  const { data, error, types } = useProduct();
 
   return (
     <section className="flex flex-col align-center mt-5">
