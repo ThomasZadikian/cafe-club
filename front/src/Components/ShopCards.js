@@ -11,7 +11,7 @@ const ShopCards = () => {
       "http://localhost:3001/api/products/productsDisplay",
       { method: "GET" }
     );
-    const promise2 = fetch("http://localhost:3001/api/products/typesDisplay", {
+    const promise2 = fetch("http://localhost:3001/api/products/productsType", {
       method: "GET",
     });
 

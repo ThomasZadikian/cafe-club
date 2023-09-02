@@ -1,9 +1,7 @@
 import { React } from "react";
 import CartIcons from "./CartIcons";
-import { useProduct } from "./ProductContext";
 
-const ProductsCard = ({ error, imageClassName, cardClassName, type }) => {
-  const { data } = useProduct();
+const ProductsCard = ({ data, error, imageClassName, cardClassName, type }) => {
   return (
     <>
       {error ? (

@@ -8,6 +8,7 @@ export function useProduct() {
 
 export function ProductProvider({ children }) {
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3001/api/products/productsDisplay", {
@@ -18,28 +19,27 @@ export function ProductProvider({ children }) {
           console.error(
             "Erreur lors de la récupération des données, recherche de sauvegarde locale"
           );
+          setError(response);
+        } else {
+          return response.json();
         }
-        return response.json();
       })
       .catch(() => {
-        console.error(
-          "Erreur lors de la récupération des données, recherche de sauvegarde locale"
-        );
         return require("../db/db.json");
       })
       .then((data) => {
         if (data.products) {
+          // This case is for the .json files only
           setData(data.products);
-          console.log("Données récupérées depuis la sauvegarde locale");
         } else {
+          // This case is for the API only
           setData(data);
-          console.log("Données récupérées depuis la base de données");
         }
       });
   }, []);
 
   return (
-    <ProductContext.Provider value={{ data }}>
+    <ProductContext.Provider value={{ data, error }}>
       {children}
     </ProductContext.Provider>
   );
