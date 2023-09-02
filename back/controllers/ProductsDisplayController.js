@@ -7,10 +7,6 @@ router.get("/productsDisplay", async (req, res) => {
 
   db.execute(query, (error, result) => {
     if (error) {
-      console.error(
-        "Erreur lors de la récupération des produits en base de données",
-        error
-      );
       res.status(500).json({
         error:
           "Une erreur est survenur lors de la récupération des produits en base de données",

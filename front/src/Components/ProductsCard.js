@@ -1,13 +1,15 @@
 import { React } from "react";
 import CartIcons from "./CartIcons";
+import { useProduct } from "./ProductContext";
 
-const ProductsCard = ({ data, error, imageClassName, cardClassName, type }) => {
+const ProductsCard = ({ error, imageClassName, cardClassName, type }) => {
+  const { data } = useProduct();
   return (
     <>
       {error ? (
         <p className="border border-red-900 rounded-md bg-red-900 p-2">
-          Erreur lors de la récupération des données, merci de contacter un
-          adminstrateur
+          Vous utilisez une version locale de la base de données, les données
+          pourraient ne pas correspondre parfaitement à ce qui est attendu.
         </p>
       ) : null}
       {data.map((product) => {

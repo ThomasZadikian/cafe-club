@@ -7,10 +7,6 @@ router.get("/productsType", async (req, res) => {
 
   db.execute(query, (error, result) => {
     if (error) {
-      console.error(
-        "Erreur lors de la récupération des types de produits :",
-        error
-      );
       res.status(500).json({
         error:
           "Une erreur est survenue lors de la récupération des types de produits",
