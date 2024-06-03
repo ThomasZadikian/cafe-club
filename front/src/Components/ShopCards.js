@@ -8,6 +8,7 @@ const ShopCards = () => {
   data.map((product) => {
     data.sort((a, b) => b.number_of_sales - a.number_of_sales);
     product.index = 1;
+    return product.index;
   });
 
   return (

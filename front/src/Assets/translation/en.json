@@ -1,0 +1,7 @@
+{
+  "components": {
+    "shared": {
+      "noDataBase": "You are using a local version of the database, the data may not perfectly match what is expected. Local usage also prevents the use of user accounts and the entire ordering system."
+    }
+  }
+}

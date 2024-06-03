@@ -8,6 +8,7 @@ const BestSalesProducts = () => {
   data.map((product) => {
     data.sort((a, b) => b.number_of_sales - a.number_of_sales);
     product.index = data.indexOf(product);
+    return product.index;
   });
 
   return (
