@@ -24,6 +24,7 @@ const ProductForm = () => {
       typeId: selectedTypeId,
     };
 
+    // Send the data into the database
     try {
       const response = await fetch(
         "http://localhost:3001/api/products/insert",
@@ -47,6 +48,7 @@ const ProductForm = () => {
     }
   }
 
+  // Retrieve the data for the product type
   useEffect(() => {
     fetch("http://localhost:3001/api/products/productsType")
       .then((response) => response.json())
@@ -60,6 +62,7 @@ const ProductForm = () => {
       });
   }, []);
 
+  // Confirm the push inside the database
   useEffect(() => {
     fetch("http://localhost:3001/api/confirmation", {
       method: "POST",

@@ -4,6 +4,7 @@ import Homepage from "./Pages/HomePage";
 import ContactPage from "./Pages/ContactPage";
 import ShopPage from "./Pages/ShopPage";
 import OrderPage from "./Pages/OrderPage";
+import AdminPage from "./Pages/AdminPage";
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
         <Route path="/shop" component={ShopPage} />
         <Route path="/contact" component={ContactPage} />
         <Route path="/ordre" component={OrderPage} />
+        <Route path="/admin" component={AdminPage} />
       </Routes>
     </Router>
   );

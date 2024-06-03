@@ -20,6 +20,10 @@ const Navbar = () => {
           <NavLink to={"/"} label={"Accueil"} />
           <NavLink to={"/shop"} label={"Nos produits"} />
           <NavLink to={"/contact"} label={"Contact"} />
+          {/* TODO : 
+          Update conditonnal with userRoles 
+          */}
+          <NavLink to={"/admin"} label={"Admin"} />
         </ul>
       </nav>
     </header>

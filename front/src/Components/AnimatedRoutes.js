@@ -7,6 +7,7 @@ import OrderPage from "../Pages/OrderPage";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import ErrorDb from "./ErrorDb";
+import AdminPage from "../Pages/AdminPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const AnimatedRoutes = () => {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/order" element={<OrderPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </AnimatePresence>
     </>
