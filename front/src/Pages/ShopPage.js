@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ShopCards from "../Components/ShopCards";
+import ShopCards from "../Components/shared/ShopCards";
 
 const ShopPage = () => {
   return (

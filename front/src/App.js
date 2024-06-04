@@ -3,7 +3,7 @@ import React from "react";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import AnimatedRoutes from "./Components/AnimatedRoutes";
-import { ProductProvider } from "./Components/ProductContext";
+import { ProductProvider } from "./Components/shared/ProductContext";
 
 const App = () => {
   return (

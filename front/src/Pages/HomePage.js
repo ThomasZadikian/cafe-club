@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import BestSalesProducts from "../Components/BestSalesProducts";
+import BestSalesProducts from "../Components/shared/BestSalesProducts";
 
 const HomePage = () => {
   return (

@@ -41,7 +41,7 @@ export function ProductProvider({ children }) {
 
         // Load the local json files if necessary
         try {
-          const localData = await import("../db/db.json");
+          const localData = await import("../../db/db.json");
           setData(localData.products);
           setTypes(localData.types);
           setErrorLocal(1);
