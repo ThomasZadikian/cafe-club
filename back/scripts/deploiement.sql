@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS cafe_club;
+
+
 CREATE TABLE users (
   user_id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
@@ -15,7 +18,9 @@ CREATE TABLE products (
   price DECIMAL(10, 2),
   origin VARCHAR(255),
   number_of_sales INT,
-  image LONGTEXT
+  id_type INT,
+  image LONGTEXT, 
+  FOREIGN KEY (id_type) REFERENCES product_types(id)
 );
 
 CREATE TABLE product_types (

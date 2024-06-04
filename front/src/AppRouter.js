@@ -14,7 +14,7 @@ const AppRouter = () => {
         <Route path="/shop" component={ShopPage} />
         <Route path="/contact" component={ContactPage} />
         <Route path="/ordre" component={OrderPage} />
-        <Route path="/admin" component={AdminPage} />
+        {/* <Route path="/admin" component={AdminPage} /> */}
       </Routes>
     </Router>
   );

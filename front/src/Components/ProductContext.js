@@ -8,97 +8,56 @@ export function useProduct() {
 
 export function ProductProvider({ children }) {
   const [data, setData] = useState([]);
-  const [errorLocal, seterrorLocal] = useState();
+  const [errorLocal, setErrorLocal] = useState();
   const [types, setTypes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/products/productsDisplay", {
-      method: "GET",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.errorLocal(
-            "Erreur lors de la récupération des données, recherche de sauvegarde locale"
-          );
-        } else {
-          return response.json();
+    const fetchData = async () => {
+      try {
+        const response1 = await fetch(
+          "http://localhost:3001/api/products/productsDisplay"
+        );
+        if (!response1.ok) {
+          throw new Error("Erreur lors de la récupération des données");
         }
-      })
-      .catch(() => {
-        return require("../db/db.json");
-      })
-      .then((data, errorLocal) => {
-        if (data.products) {
-          // This case is for the .json files only
-          setData(data.products);
-          seterrorLocal(1);
-        } else {
-          // This case is for the API only
-          setData(data);
-        }
-      });
-  }, []);
+        const data = await response1.json();
+        setData(data);
 
-  useEffect(() => {
-    const promise1 = fetch(
-      "http://localhost:3001/api/products/productsDisplay",
-      { method: "GET" }
-    );
-    const promise2 = fetch("http://localhost:3001/api/products/productsType", {
-      method: "GET",
-    });
-
-    promise1
-      .then((response) => {
-        if (!response.ok) {
-          console.errorLocal(
-            "Erreur lors de la récupération des données, recherche de sauvegarde locale"
+        const response2 = await fetch(
+          "http://localhost:3001/api/products/productsTypes"
+        );
+        if (!response2.ok) {
+          throw new Error(
+            "Erreur lors de la récupération des types de produits"
           );
-        } else {
-          return response.json();
         }
-      })
-      .catch(() => {
-        return require("../db/db.json");
-      })
-      .then((data, errorLocal) => {
-        if (data.products) {
-          // This case is for the .json files only
-          setData(data.products);
-          seterrorLocal(1);
-        } else {
-          // This case is for the API only
-          setData(data);
-        }
-      });
+        const types = await response2.json();
+        setTypes(types);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des données ou des types",
+          error
+        );
 
-    promise2
-      .then((response) => {
-        if (!response) {
-          console.errorLocal(
-            "Erreur lors de la récupération des données, recherche de sauvegarde locale"
-          );
-        } else {
-          return response.json();
+        // Load the local json files if necessary
+        try {
+          const localData = await import("../db/db.json");
+          setData(localData.products);
+          setTypes(localData.types);
+          setErrorLocal(1);
+        } catch (error) {
+          console.error("Erreur lors du chargement des données locales", error);
         }
-      })
-      .catch(() => {
-        return require("../db/db.json");
-      })
-      .then((types, errorLocal) => {
-        if (types.types) {
-          // This case is for the .json files only
-          setTypes(types.types);
-          seterrorLocal(1);
-        } else {
-          // This case is for the API only
-          setTypes(types);
-        }
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
-    <ProductContext.Provider value={{ data, errorLocal, types }}>
+    <ProductContext.Provider
+      value={errorLocal ? { data, errorLocal, types } : { data, types }}
+    >
       {children}
     </ProductContext.Provider>
   );

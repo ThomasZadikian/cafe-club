@@ -50,7 +50,7 @@ const ProductForm = () => {
 
   // Retrieve the data for the product type
   useEffect(() => {
-    fetch("http://localhost:3001/api/products/productsType")
+    fetch("http://localhost:3001/api/products/productsTypes")
       .then((response) => response.json())
       .then((data) => {
         setProductsType(data);
