@@ -1,6 +1,5 @@
-const fetchUser = require("../../back/controllers/UsersController/fetchUserController");
-const insertUser = require("../../back/controllers/UsersController/insertUserController");
-const bcrypt = require("bcrypt");
+// const fetchUser = require("../../back/controllers/UsersController/fetchUserController");
+// const insertUser = require("../../back/controllers/UsersController/insertUserController");
 
 const usernameVerification = (username) => {
   if (typeof username !== "string") {
@@ -28,34 +27,33 @@ const passwordVerification = (password) => {
       "Erreur : le mot de passe doit être une chaine de caractère"
     );
   } else {
-    switch (username) {
+    switch (password) {
       case "":
-        console.log("Erreur : Le nom d'utilisateur ne peut pas être vide");
+        console.log(
+          "Erreur : Le nom d'utilisateumot de passe ne peut pas être vide "
+        );
         return false;
       case "admin":
-        console.log("Erreur : Ce nom d'utilisateur est réservé");
+        console.log("Erreur : Ce mot de passe est réservé est réservé");
         return false;
       default:
-        console.log("Le nom d'utilisateur est valide");
+        console.log("Le mot de passe est valide");
         return true;
     }
   }
 };
 
-const insertUserVerification = async (username, email, password) => {
-  const saltRounds = 10;
-  const userInformations = [];
+export const insertUserVerification = (username, email, password) => {
   /*  Vérifier si l'utilisateur existe déjà via le controller fetchUser */
-  const user = await fetchUser.fetchUser(username, email);
   const checkUsernameVerification = usernameVerification(username);
   const checkPassword = passwordVerification(password);
-  if (user.length === 0 && checkUsernameVerification && checkPassword) {
-    bcrypt.hash(password, saltRounds, function (err, hash) {
-      insertUser.insertUser(username, email, hash);
-    });
+  if (checkUsernameVerification && checkPassword) {
+    console.log("Appeler la fonction d'insert en base de donnée");
   } else {
     return console.error("Cet utilisateur existe déjà");
   }
 };
 
-const pushToController = (username, email, password, role_id) => {};
+// const pushToController = (username, email, password, role_id) => {};
+
+export default insertUserVerification;

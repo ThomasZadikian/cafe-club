@@ -6,7 +6,7 @@ import NavLink from "./NavLink";
 const Navbar = () => {
   return (
     <header className="flex justify-center">
-      <nav className="md:flex flex-col md:flex-row justify-center items-center rounded-lg mt-5 border border-gold px-2 w-screen md:max-w-screen-md">
+      <nav className="md:flex flex-col md:flex-row justify-center items-center rounded-lg mt-5 border border-gold px-2 w-screen md:max-w-screen-lg">
         <div className="flex items-center mb-2 md:mb-0">
           <SearchIcon height={"38"} width={"38"} fill={"white"} />
           <SearchBox
@@ -20,6 +20,7 @@ const Navbar = () => {
           <NavLink to={"/"} label={"Accueil"} />
           <NavLink to={"/shop"} label={"Nos produits"} />
           <NavLink to={"/contact"} label={"Contact"} />
+          <NavLink to={"/create"} label={"Enregistrement"} />
           {/* TODO : 
           Update conditonnal with userRoles 
           */}
