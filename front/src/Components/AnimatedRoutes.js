@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import Navbar from "./shared/Navbar";
 import ErrorDb from "./shared/ErrorDb";
 import AdminPage from "../Pages/AdminPage";
+import UserCreationPage from "../Pages/UserCreationPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const AnimatedRoutes = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/order" element={<OrderPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/create" element={<UserCreationPage />} />
         </Routes>
       </AnimatePresence>
     </>

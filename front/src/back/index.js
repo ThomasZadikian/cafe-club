@@ -2,27 +2,28 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+/* const for import API functions for products */
 const productsRoutes = require("./controllers/ProductsController/ProductsController");
 const productsTypes = require("./controllers/ProductsController/ProductsTypeController");
 const products = require("./controllers/ProductsController/ProductsDisplayController");
 
+/* const for import API functions for users */
+const insertUser = require("./controllers/UsersController/insertUserController");
+
 app.use(express.json());
 app.use(cors());
 
+/* routes for products */
 app.use("/api/products", productsRoutes);
 app.use("/api/products", productsTypes);
 app.use("/api/products", products);
 
-app.post("/api/products", (req, res) => {
-  const { productName, description, price, origin } = req.body;
-  res.status(201).json({ message: "Product created successfully" });
-});
+/* routes for users */
+app.use("/api/users", insertUser);
 
-app.post("/api/confirmation", (req, res) => {
-  res.json({ message: "Le serveur est en marche" });
-});
+/* initialize value for Express */
 
-app.use((req, res, next) => {
+app.use((res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
