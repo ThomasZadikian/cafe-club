@@ -1,63 +1,68 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "product_name": "Café macchiato",
-        "description": "A base de café  expresso et de lait mousseux, ce café macchiato a été préparé dans le plus grands respect de ses grains de café de Kona, directement importé d’Hawaï",
-        "price": 5.99,
-        "origin": "Hawaï",
-        "id_type": 1,
-        "number_of_sales": 10
-      },
-      {
-        "id": 2,
-        "product_name": "Thé macha",
-        "description": "Originaire du japon, notre thé matca est fabriqué de manière naturelle, à l'ombre durant trois mois afin de conserver toute sa saveur et ses bien faits",
-        "price": 7.99,
-        "origin": "Japon",
-        "id_type": 2,
-        "number_of_sales": 7
-      },
-      {
-        "id": 3,
-        "product_name": "Chocolat Godiva",
-        "description": "Un merveilleux chocolat chaud, préparé avec du lait crémeux dans lequel sera fondu un chocolat “Godiva” directement importé de Belgique",
-        "price": 7.99,
-        "origin": "Belgique",
-        "id_type": 3,
-        "number_of_sales": 12
-      },
-      {
-        "id": 4,
-        "product_name": "Thé rouge du monde",
-        "description": "Ce thé, confectionné à partir d'une sélection pointilleuse de divers thé combine les saveurs sucrées et acidulées de baies telles que les fraises, les framboises et les cerises. IL  est une invitation à s'évader dans un jardin luxuriant de saveurs et de parfums.",
-        "price": 4.99,
-        "origin": "Monde",
-        "id_type": 2,
-        "number_of_sales": 0
-      },
-      {
-        "id": 5,
-        "product_name": "Café Kopi Luwak",
-        "description": "Découvrez ce délicieux café fabriqué à partir des graines fermentée 'Kopi Luwak'. Appréciez sa puissance et son caractère, son amertume enveloppante et sa délicatesse déroutante",
-        "price": 6.99,
-        "origin": "Indonésie",
-        "id_type": 1,
-        "number_of_sales": 0
-      }
-    ],
-    "types": [
-      {
-        "id": 1,
-        "nom_type": "cafe"
-      },
-      {
-        "id": 2,
-        "nom_type": "the"
-      },
-      {
-        "id": 3,
-        "nom_type": "chocolat"
-      }
-    ]
-  }
+  "products": [
+    {
+      "id": 1,
+      "product_name": "Café macchiato",
+      "description": "A base de café  expresso et de lait mousseux, ce café macchiato a été préparé dans le plus grands respect de ses grains de café de Kona, directement importé d’Hawaï",
+      "price": 5.99,
+      "origin": "Hawaï",
+      "id_type": 1,
+      "number_of_sales": 10,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "product_name": "the macha",
+      "description": "Originaire du japon, notre thé matca est fabriqué de manière naturelle, à l'ombre durant trois mois afin de conserver toute sa saveur et ses bien faits",
+      "price": 7.99,
+      "origin": "Japon",
+      "id_type": 2,
+      "number_of_sales": 7,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "product_name": "Chocolat Godiva",
+      "description": "Un merveilleux chocolat chaud, préparé avec du lait crémeux dans lequel sera fondu un chocolat “Godiva” directement importé de Belgique",
+      "price": 7.99,
+      "origin": "Belgique",
+      "id_type": 3,
+      "number_of_sales": 12,
+      "image": ""
+    },
+    {
+      "id": 4,
+      "product_name": "Thé rouge du monde",
+      "description": "Ce thé, confectionné à partir d'une sélection pointilleuse de divers thé combine les saveurs sucrées et acidulées de baies telles que les fraises, les framboises et les cerises. IL  est une invitation à s'évader dans un jardin luxuriant de saveurs et de parfums.",
+      "price": 4.99,
+      "origin": "Monde",
+      "id_type": 2,
+      "number_of_sales": 0,
+      "image": ""
+    },
+    {
+      "id": 5,
+      "product_name": "Café Kopi Luwak",
+      "description": "Découvrez ce délicieux café fabriqué à partir des graines fermentée 'Kopi Luwak'. Appréciez sa puissance et son caractère, son amertume enveloppante et sa délicatesse déroutante",
+      "price": 6.99,
+      "origin": "Indonésie",
+      "id_type": 1,
+      "number_of_sales": 0,
+      "image": ""
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "nom_type": "cafe"
+    },
+    {
+      "id": 2,
+      "nom_type": "the"
+    },
+    {
+      "id": 3,
+      "nom_type": "chocolat"
+    }
+  ]
+}

@@ -14,24 +14,24 @@ export function ProductProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response1 = await fetch(
-          "http://localhost:3001/api/products/productsDisplay"
+        const fetchAllProducts = await fetch(
+          "http://localhost:8080/api/products/productsDisplay"
         );
-        if (!response1.ok) {
+        if (!fetchAllProducts.ok) {
           throw new Error("Erreur lors de la récupération des données");
         }
-        const data = await response1.json();
+        const data = await fetchAllProducts.json();
         setData(data);
 
-        const response2 = await fetch(
-          "http://localhost:3001/api/products/productsTypes"
+        const fetchAllTypes = await fetch(
+          "http://localhost:8080/api/products/productsType"
         );
-        if (!response2.ok) {
+        if (!fetchAllTypes.ok) {
           throw new Error(
             "Erreur lors de la récupération des types de produits"
           );
         }
-        const types = await response2.json();
+        const types = await fetchAllTypes.json();
         setTypes(types);
       } catch (error) {
         console.error(

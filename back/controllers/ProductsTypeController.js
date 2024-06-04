@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../db/db");
 
 router.get("/productsType", async (req, res) => {
-  const query = "SELECT * FROM types";
+  const query = "SELECT * FROM product_types";
 
   db.execute(query, (error, result) => {
     if (error) {

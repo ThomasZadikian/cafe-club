@@ -4,10 +4,7 @@ import CartIcons from "./CartIcons";
 const ProductsCard = ({ data, imageClassName, cardClassName, type }) => {
   return (
     <>
-      {data.map((product) => {
-        const image = require("../Assets/Images/" +
-          product.product_name +
-          ".jpg");
+      {data.map((product, index) => {
         if (type !== product.id_type && type !== "all") {
           return null;
         } else {
@@ -19,7 +16,7 @@ const ProductsCard = ({ data, imageClassName, cardClassName, type }) => {
               }`}
             >
               <img
-                src={image}
+                src={product.image}
                 alt={`Exemple de ${product.product_name}`}
                 className={imageClassName}
               />

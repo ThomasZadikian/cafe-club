@@ -9,9 +9,9 @@ const products = require("./controllers/ProductsDisplayController");
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/products/insert", productsRoutes);
-app.use("/api/products/productsTypes", productsTypes);
-app.use("/api/products/productsDisplay", products);
+app.use("/api/products", productsRoutes);
+app.use("/api/products", productsTypes);
+app.use("/api/products", products);
 
 app.post("/api/products", (req, res) => {
   const { productName, description, price, origin } = req.body;
@@ -26,4 +26,8 @@ app.use((req, res, next) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-const port = process.env.PORT || 3306;
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

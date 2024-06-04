@@ -17,14 +17,15 @@ const ShopCards = () => {
         return (
           <>
             <p
-              key={type.id}
+              key={type.type_id}
               className="mx-5 border-y border-gold p-3 my-5 md:mx-80 px-5 text-center text-2xl font-bold"
             >
-              Nos {type.nom_type}s
+              Nos {type.type_name}s
             </p>
             <article className="flex justify-center mx-auto w-12/12 flex-wrap">
+              {console.log(data)}
               <ProductsCard
-                type={type.id}
+                type={type.type_id}
                 data={data.product ? data.products : data}
                 imageClassName={`rounded-3xl h-64 w-96 mx-auto my-3 `}
                 cardClassName="flex flex-col mx-2"
