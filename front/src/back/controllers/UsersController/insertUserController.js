@@ -1,19 +1,17 @@
-const multer = require("multer");
-const path = require("path");
 const express = require("express");
+const multer = require("multer");
 const router = express.Router();
 const db = require("../../db/db");
+const upload = multer();
 
-const upload = multer({ dest: "../../front/src/Assets/Images" });
-
-router.post("/insert", upload.single("file"), async (req, res) => {
+router.post("/insert", upload.none(), async (req, res) => {
   const { username, email, password } = req.body;
-
+  console.log(username, email, password);
   const query = `
-    INSERT INTO users (username, email, password, role_id)
+    INSERT INTO users (username, email, password, role_id) 
     VALUES (?,?,?,1)
   `;
-
+  console.log(query);
   db.execute(query, [username, email, password], (error, results) => {
     if (error) {
       console.error(
@@ -21,7 +19,7 @@ router.post("/insert", upload.single("file"), async (req, res) => {
         error
       );
       res.status(500).json({
-        error: "Une erreur est survenue durant 'ajout de l'utilisateur'",
+        error: "Une erreur est survenue durant l'ajout de l'utilisateur",
       });
     } else {
       res

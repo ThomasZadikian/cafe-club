@@ -929,10 +929,6 @@ code {
     width: 24rem;
   }
 
-  .md\:max-w-screen-md{
-    max-width: 768px;
-  }
-
   .md\:max-w-screen-lg{
     max-width: 1024px;
   }

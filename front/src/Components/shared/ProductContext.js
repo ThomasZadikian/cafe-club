@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
+import { BASE_API_URL } from "../../Assets/constantes/constants";
 
 const ProductContext = createContext();
 
@@ -15,7 +16,7 @@ export function ProductProvider({ children }) {
     const fetchData = async () => {
       try {
         const fetchAllProducts = await fetch(
-          "http://localhost:8080/api/products/productsDisplay"
+          `${BASE_API_URL}products/productsDisplay`
         );
         if (!fetchAllProducts.ok) {
           throw new Error("Erreur lors de la récupération des données");
@@ -24,7 +25,7 @@ export function ProductProvider({ children }) {
         setData(data);
 
         const fetchAllTypes = await fetch(
-          "http://localhost:8080/api/products/productsType"
+          `${BASE_API_URL}products/productsType`
         );
         if (!fetchAllTypes.ok) {
           throw new Error(
@@ -38,16 +39,6 @@ export function ProductProvider({ children }) {
           "Erreur lors de la récupération des données ou des types",
           error
         );
-
-        // Load the local json files if necessary
-        try {
-          const localData = await import("../../db/db.json");
-          setData(localData.products);
-          setTypes(localData.types);
-          setErrorLocal(1);
-        } catch (error) {
-          console.error("Erreur lors du chargement des données locales", error);
-        }
       }
     };
 

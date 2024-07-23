@@ -7,7 +7,11 @@ const UserForm = () => {
   const [email, setEmail] = useState("");
   async function handleSubmit(event) {
     event.preventDefault();
-    insertUserVerification(username, password, email);
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    insertUserVerification(formData);
   }
 
   return (
@@ -33,7 +37,6 @@ const UserForm = () => {
             className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            pattern="^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
           />
         </div>
         <div>

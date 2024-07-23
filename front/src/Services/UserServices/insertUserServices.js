@@ -1,59 +1,63 @@
-// const fetchUser = require("../../back/controllers/UsersController/fetchUserController");
-// const insertUser = require("../../back/controllers/UsersController/insertUserController");
+import { BASE_API_URL } from "../../Assets/constantes/constants";
 
-const usernameVerification = (username) => {
-  if (typeof username !== "string") {
-    return console.log(
-      "Erreur : Le nom d'utilisateur doit être une chaîne de caractères"
-    );
-  } else {
-    switch (username) {
-      case "":
-        console.log("Erreur : Le nom d'utilisateur ne peut pas être vide");
-        return false;
-      case "admin":
-        console.log("Erreur : Ce nom d'utilisateur est réservé");
-        return false;
-      default:
-        console.log("Le nom d'utilisateur est valide");
-        return true;
-    }
-  }
-};
+let users = [];
 
-const passwordVerification = (password) => {
-  if (typeof password !== "string") {
-    return console.log(
-      "Erreur : le mot de passe doit être une chaine de caractère"
-    );
+const usernameVerification = async (formData) => {
+  const username = formData.get("username");
+  const email = formData.get("email");
+  if (username === null || email === null) {
+    return false;
   } else {
-    switch (password) {
-      case "":
-        console.log(
-          "Erreur : Le nom d'utilisateumot de passe ne peut pas être vide "
+    try {
+      const response = await fetch(`${BASE_API_URL}users/fetch`, {
+        method: "GET",
+      });
+      if (response.ok) {
+        users = await response.json();
+      } else {
+        console.error(
+          "Erreur lors de l'envoi des données :",
+          response.statusText
         );
-        return false;
-      case "admin":
-        console.log("Erreur : Ce mot de passe est réservé est réservé");
-        return false;
-      default:
-        console.log("Le mot de passe est valide");
-        return true;
+      }
+    } catch (error) {
+      console.error("Erreur lors de la récupération des utilisateurs" + error);
     }
+    return !users.some(
+      (user) => user.username === username || user.email === email
+    );
   }
 };
 
-export const insertUserVerification = (username, email, password) => {
-  /*  Vérifier si l'utilisateur existe déjà via le controller fetchUser */
-  const checkUsernameVerification = usernameVerification(username);
-  const checkPassword = passwordVerification(password);
-  if (checkUsernameVerification && checkPassword) {
-    console.log("Appeler la fonction d'insert en base de donnée");
+export const insertUserVerification = async (formData) => {
+  const username = formData.get("username");
+  const email = formData.get("email");
+  const password = formData.get("password");
+  if (await usernameVerification(formData)) {
+    try {
+      const response = await fetch(`${BASE_API_URL}users/insert`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+        }),
+      });
+      if (response.ok) {
+        console.log("Ca fonctionne");
+      } else {
+        console.log("Non fonctionnel");
+      }
+    } catch {
+      console.log(
+        "Erreur lors de la conection à la base de donnée insert user verification"
+      );
+    }
   } else {
-    return console.error("Cet utilisateur existe déjà");
+    return console.error("Certaines informations sont erronées.");
   }
 };
-
-// const pushToController = (username, email, password, role_id) => {};
-
 export default insertUserVerification;

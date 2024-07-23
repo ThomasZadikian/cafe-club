@@ -10,7 +10,7 @@ const ProductsCard = ({ data, imageClassName, cardClassName, type }) => {
         } else {
           return (
             <div
-              key={product.id}
+              key={index}
               className={`${cardClassName} ${
                 product.index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
@@ -20,7 +20,10 @@ const ProductsCard = ({ data, imageClassName, cardClassName, type }) => {
                 alt={`Exemple de ${product.product_name}`}
                 className={imageClassName}
               />
-              <article className="flex flex-col items-center justify-start md:w-96 md:h-96 border-2 border-gold rounded-3xl my-3 mx-5">
+              <article
+                key={product.id}
+                className="flex flex-col items-center justify-start md:w-96 md:h-96 border-2 border-gold rounded-3xl my-3 mx-5"
+              >
                 <h1 className="my-3 text-xl font-bold border-b-2 border-gold p-2">
                   {product.product_name}
                 </h1>

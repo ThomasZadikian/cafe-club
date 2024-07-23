@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BASE_API_URL } from "../Assets/constantes/constants";
 
 const ProductForm = () => {
   const [productName, setProductName] = useState("");
@@ -26,13 +27,10 @@ const ProductForm = () => {
 
     // Send the data into the database
     try {
-      const response = await fetch(
-        "http://localhost:3001/api/products/insert",
-        {
-          method: "POST",
-          body: productData,
-        }
-      );
+      const response = await fetch(`${BASE_API_URL}products/insert`, {
+        method: "POST",
+        body: productData,
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -50,7 +48,7 @@ const ProductForm = () => {
 
   // Retrieve the data for the product type
   useEffect(() => {
-    fetch("http://localhost:3001/api/products/productsTypes")
+    fetch(`${BASE_API_URL}products/productsTypes`)
       .then((response) => response.json())
       .then((data) => {
         setProductsType(data);
@@ -64,7 +62,7 @@ const ProductForm = () => {
 
   // Confirm the push inside the database
   useEffect(() => {
-    fetch("http://localhost:3001/api/confirmation", {
+    fetch(`${BASE_API_URL}confirmation`, {
       method: "POST",
     })
       .then((response) => {
@@ -82,7 +80,7 @@ const ProductForm = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/products/productsDisplay", {
+    fetch(`${BASE_API_URL}products/productsDisplay`, {
       method: "GET",
     })
       .then((response) => {
