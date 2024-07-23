@@ -14,8 +14,13 @@ const usernameVerification = async (formData) => {
     } catch (error) {
       console.error("Error fetching users:", error);
     }
+    console.log(users);
+    if (users?.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
-  return !users;
 };
 
 export const insertUserVerification = async (formData) => {
@@ -24,7 +29,7 @@ export const insertUserVerification = async (formData) => {
   const password = formData.get("password");
   if (await usernameVerification(formData)) {
     try {
-      await fetch(`${BASE_API_URL}users/insert`, {
+      const response = await fetch(`${BASE_API_URL}users/insert`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,11 +40,19 @@ export const insertUserVerification = async (formData) => {
           password: password,
         }),
       });
-    } catch {
-      return console.error("Erreur lors de la conection à la base de donnée");
+      if (!response.ok) {
+        console.log("faux");
+        return false;
+      } else {
+        console.log("User created successfully!");
+      }
+    } catch (error) {
+      console.log("faux");
+      return false;
     }
   } else {
-    return console.error("Certaines informations sont erronées.");
+    console.log("faux");
+    return false;
   }
 };
 

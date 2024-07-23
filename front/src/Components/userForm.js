@@ -1,21 +1,39 @@
 import React, { useState } from "react";
 import { insertUserVerification } from "../Services/UserServices/insertUserServices";
+import ErrorMessage from "./shared/ErrorMessage";
 
 const UserForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [errorAppear, setErrorAppear] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
-    insertUserVerification(formData);
+    if (insertUserVerification(formData)) {
+      setErrorAppear(true);
+      setErrorMessage(
+        "Les données fournies lors de l'inscription ne sont pas correctes."
+      );
+    }
+  }
+
+  if (errorAppear === true) {
+    setTimeout(() => {
+      setErrorAppear(false);
+    }, 3000);
   }
 
   return (
     <div className="bg-dark border border-gold rounded-lg p-8 max-w-md mx-auto mt-8">
+      {errorAppear ? (
+        <ErrorMessage message={errorMessage} error={errorAppear} />
+      ) : null}
       <h2 className="text-2xl font-semibold mb-6">
         Formulaire d'ajout d'utilisateur
       </h2>
