@@ -13,11 +13,7 @@ const usernameVerification = async (formData) => {
     } catch (error) {
       return false;
     }
-    if (users?.length === 0 || users === undefined) {
-      return true;
-    } else {
-      return false;
-    }
+    return !!(users?.length === 0 || users === undefined);
   }
 };
 
@@ -38,9 +34,7 @@ export const insertUserVerification = async (formData) => {
           password: password,
         }),
       });
-      if (!response.ok) {
-        return false;
-      }
+      return !!response.ok;
     } catch (error) {
       return false;
     }

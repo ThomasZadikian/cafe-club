@@ -15,7 +15,9 @@ const UserForm = () => {
     formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
-    if (insertUserVerification(formData)) {
+    const isInserted = await insertUserVerification(formData);
+    console.log(isInserted);
+    if (!isInserted) {
       console.log("Non insérée");
       setErrorAppear(true);
       setErrorMessage(
