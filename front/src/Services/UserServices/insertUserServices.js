@@ -15,12 +15,7 @@ const usernameVerification = async (formData) => {
       console.error("Error fetching users:", error);
     }
   }
-  console.log(users);
-  if (users === undefined) {
-    return true;
-  } else {
-    return false;
-  }
+  return !users;
 };
 
 export const insertUserVerification = async (formData) => {
@@ -28,9 +23,8 @@ export const insertUserVerification = async (formData) => {
   const email = formData.get("email");
   const password = formData.get("password");
   if (await usernameVerification(formData)) {
-    console.log("Je passe les vérification");
     try {
-      const response = await fetch(`${BASE_API_URL}users/insert`, {
+      await fetch(`${BASE_API_URL}users/insert`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,15 +35,8 @@ export const insertUserVerification = async (formData) => {
           password: password,
         }),
       });
-      if (response.ok) {
-        console.log("Ca fonctionne");
-      } else {
-        console.log("Non fonctionnel");
-      }
     } catch {
-      console.log(
-        "Erreur lors de la conection à la base de donnée insert user verification"
-      );
+      return console.error("Erreur lors de la conection à la base de donnée");
     }
   } else {
     return console.error("Certaines informations sont erronées.");
