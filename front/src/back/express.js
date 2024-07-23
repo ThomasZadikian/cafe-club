@@ -9,7 +9,8 @@ const products = require("./controllers/ProductsController/ProductsDisplayContro
 
 /* const for import API functions for users */
 const insertUser = require("./controllers/UsersController/insertUserController");
-const fetchUsers = require("./controllers/UsersController/fetchUserController");
+const fetchUsers = require("./controllers/UsersController/fetchUsersController");
+const fetchUser = require("./controllers/UsersController/fetchUserController");
 
 app.use(express.json());
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/api/products", products);
 /* routes for users */
 app.use("/api/users", insertUser);
 app.use("/api/users", fetchUsers);
+app.use("/api/users", fetchUser);
 
 /* initialize value for Express */
 

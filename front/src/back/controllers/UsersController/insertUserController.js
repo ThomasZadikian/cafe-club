@@ -1,17 +1,14 @@
 const express = require("express");
-const multer = require("multer");
 const router = express.Router();
 const db = require("../../db/db");
-const upload = multer();
 
-router.post("/insert", upload.none(), async (req, res) => {
+router.post("/insert", async (req, res) => {
   const { username, email, password } = req.body;
-  console.log(username, email, password);
   const query = `
     INSERT INTO users (username, email, password, role_id) 
     VALUES (?,?,?,1)
   `;
-  console.log(query);
+  console.log("Je fonctionne");
   db.execute(query, [username, email, password], (error, results) => {
     if (error) {
       console.error(

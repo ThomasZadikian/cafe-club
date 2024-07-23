@@ -3,12 +3,13 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db/db");
 
-router.post("/fetchUser", async (req, res) => {
-  const { username, email } = req.body;
+const upload = multer({ dest: "../../front/src/Assets/Images" });
+
+router.get("/fetchUsers", upload.single("file"), async (req, res) => {
   const query = `
-    SELECT username, email FROM users WHERE username = ? AND email = ?
+    SELECT * FROM users 
   `;
-  db.execute(query, [username, email], (error, results) => {
+  db.execute(query, (error, results) => {
     if (error) {
       console.error(
         `Erreur lors de la récupération de l'utilisateur : ${username} => `,
@@ -19,10 +20,11 @@ router.post("/fetchUser", async (req, res) => {
           "Une erreur est survenue durant la récupération de l'utilisateur",
       });
     } else {
-      if (results.length !== 0) {
-        res.status(201).json(results);
+      res.status(201);
+      if (res.length !== 0) {
+        res.json(results);
       } else {
-        res.status(404).json();
+        res.json({ message: `Aucun utilisateur n'a été trouvé` });
       }
     }
   });
