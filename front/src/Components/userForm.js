@@ -16,10 +16,13 @@ const UserForm = () => {
     formData.append("email", email);
     formData.append("password", password);
     if (insertUserVerification(formData)) {
+      console.log("Non insérée");
       setErrorAppear(true);
       setErrorMessage(
         "Les données fournies lors de l'inscription ne sont pas correctes."
       );
+    } else {
+      console.log("Inscription réussie");
     }
   }
 

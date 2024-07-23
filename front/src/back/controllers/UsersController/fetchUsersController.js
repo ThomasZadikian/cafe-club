@@ -11,20 +11,16 @@ router.get("/fetchUsers", upload.single("file"), async (req, res) => {
   `;
   db.execute(query, (error, results) => {
     if (error) {
-      console.error(
-        `Erreur lors de la récupération de l'utilisateur : ${username} => `,
-        error
-      );
       res.status(500).json({
         error:
-          "Une erreur est survenue durant la récupération de l'utilisateur",
+          "Une erreur est survenue durant la récupération des utilisateurs",
       });
     } else {
       res.status(201);
       if (res.length !== 0) {
         res.json(results);
       } else {
-        res.json({ message: `Aucun utilisateur n'a été trouvé` });
+        res.json();
       }
     }
   });

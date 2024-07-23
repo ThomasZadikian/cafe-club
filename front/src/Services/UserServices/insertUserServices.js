@@ -10,12 +10,10 @@ const usernameVerification = async (formData) => {
   } else {
     try {
       users = await fetchUser(formData);
-      console.log("Je termine de fetch dans le insert");
     } catch (error) {
-      console.error("Error fetching users:", error);
+      return false;
     }
-    console.log(users);
-    if (users?.length === 0) {
+    if (users?.length === 0 || users === undefined) {
       return true;
     } else {
       return false;
@@ -41,17 +39,12 @@ export const insertUserVerification = async (formData) => {
         }),
       });
       if (!response.ok) {
-        console.log("faux");
         return false;
-      } else {
-        console.log("User created successfully!");
       }
     } catch (error) {
-      console.log("faux");
       return false;
     }
   } else {
-    console.log("faux");
     return false;
   }
 };

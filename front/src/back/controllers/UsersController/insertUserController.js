@@ -8,7 +8,6 @@ router.post("/insert", async (req, res) => {
     INSERT INTO users (username, email, password, role_id) 
     VALUES (?,?,?,1)
   `;
-  console.log("Je fonctionne");
   db.execute(query, [username, email, password], (error, results) => {
     if (error) {
       console.error(
