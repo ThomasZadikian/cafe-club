@@ -6,6 +6,7 @@ import ShopPage from "./Pages/ShopPage";
 import OrderPage from "./Pages/OrderPage";
 import AdminPage from "./Pages/AdminPage";
 import UserCreationPage from "./Pages/UserCreationPage";
+import UserConnectPage from "./Pages/UserConnectPage";
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
         <Route path="/ordre" component={OrderPage} />
         <Route path="/admin" component={AdminPage} />
         <Route path="/create" element={<UserCreationPage />} />
+        <Route path="/connect" element={<UserConnectPage />} />
       </Routes>
     </Router>
   );

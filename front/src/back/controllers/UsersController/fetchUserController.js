@@ -4,9 +4,9 @@ const router = express.Router();
 const db = require("../../db/db");
 
 router.post("/fetchUser", async (req, res) => {
-  const { username, email } = req.body;
+  const { username, email, password } = req.body;
   const query = `
-    SELECT username, email FROM users WHERE username = ? AND email = ?
+    SELECT * FROM users WHERE username = ? AND email = ?
   `;
   db.execute(query, [username, email], (error, results) => {
     if (error) {

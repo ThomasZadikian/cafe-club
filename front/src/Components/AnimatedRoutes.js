@@ -9,6 +9,7 @@ import Navbar from "./shared/Navbar";
 import ErrorDb from "./shared/ErrorDb";
 import AdminPage from "../Pages/AdminPage";
 import UserCreationPage from "../Pages/UserCreationPage";
+import UserConnectPage from "../Pages/UserConnectPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ const AnimatedRoutes = () => {
           <Route path="/order" element={<OrderPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/create" element={<UserCreationPage />} />
+          <Route path="/connect" element={<UserConnectPage />} />
         </Routes>
       </AnimatePresence>
     </>
