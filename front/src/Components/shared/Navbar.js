@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchBox from "./SearchBox";
 import SearchIcon from "./SearchIcon";
 import NavLink from "./NavLink";
+import UserContext from "./UserContext";
+import { logoutUserService } from "../../Services/UserServices/connectUserService";
 
 const Navbar = () => {
+  const { user, setUser } = useContext(UserContext);
+  console.log(user);
+  const disconnectUser = () => {
+    logoutUserService();
+    window.location = "/";
+  };
   return (
     <header className="flex justify-center">
       <nav className="md:flex flex-col md:flex-row justify-center items-center rounded-lg mt-5 border border-gold px-2 w-screen md:max-w-screen-lg">
@@ -20,8 +28,18 @@ const Navbar = () => {
           <NavLink to={"/"} label={"Home"} />
           <NavLink to={"/shop"} label={"Products"} />
           <NavLink to={"/contact"} label={"Contact"} />
-          <NavLink to={"/create"} label={"Create"} />
-          <NavLink to={"/connect"} label={"Connect"} />
+          {!user ? (
+            <NavLink to={"/create"} label={"Create"} />
+          ) : (
+            <button
+              type="button"
+              className="bg-background-button justify-center flex items-center rounded-full text-center md:px-8 md:py-3 mb-2 py-3"
+              onClick={disconnectUser}
+            >
+              Disconect
+            </button>
+          )}
+          {!user ? <NavLink to={"/connect"} label={"Connect"} /> : null}
           <NavLink to={"/admin"} label={"Admin"} />
         </ul>
       </nav>

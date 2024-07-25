@@ -16,10 +16,11 @@ const ConnectForm = () => {
     formData.append("email", email);
     formData.append("password", password);
     const isConnected = await connectUserService(formData);
-    console.log(isConnected);
     if (!isConnected) {
       setErrorAppear(true);
       setErrorMessage("Utilisateur introuvable ou mot de passe incorect");
+    } else {
+      window.location = "/";
     }
   }
 
