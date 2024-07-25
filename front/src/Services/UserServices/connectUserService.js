@@ -5,15 +5,9 @@ export const connectUserService = async (formData) => {
     const users = await fetchUser(formData);
     const password = formData.get("password");
     if (users !== null) {
-      console.log("Utilisateur trouvé");
-      console.log(users[0].password);
-    }
-    if (users[0].password !== password) {
-      console.log("Mot de passe incorrect");
-      return false;
+      return users[0].password === password;
     } else {
-      console.log("Utilisateur trouvé et mot de passe ok");
-      return true;
+      return false;
     }
   } catch (error) {
     return false;
