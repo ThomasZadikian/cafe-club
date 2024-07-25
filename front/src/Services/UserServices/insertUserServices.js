@@ -1,4 +1,4 @@
-import { BASE_API_URL } from "../../Assets/constantes/constants";
+import { BASE_API_URL } from "../../Assets/constantes/API_URL";
 import fetchUser from "./fetchUserServices";
 
 const usernameVerification = async (formData) => {

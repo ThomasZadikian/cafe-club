@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
-import { BASE_API_URL } from "../../Assets/constantes/constants";
+import { BASE_API_URL } from "../../Assets/constantes/API_URL";
 
 const ProductContext = createContext();
 
@@ -15,24 +15,20 @@ export function ProductProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchAllProducts = await fetch(
-          `${BASE_API_URL}products/productsDisplay`
-        );
-        if (!fetchAllProducts.ok) {
+        const reponse = await fetch(`${BASE_API_URL}products/productsDisplay`);
+        if (!reponse.ok) {
           throw new Error("Erreur lors de la récupération des données");
         }
-        const data = await fetchAllProducts.json();
+        const data = await reponse.json();
         setData(data);
 
-        const fetchAllTypes = await fetch(
-          `${BASE_API_URL}products/productsType`
-        );
-        if (!fetchAllTypes.ok) {
+        const reponseType = await fetch(`${BASE_API_URL}products/productsType`);
+        if (!reponseType.ok) {
           throw new Error(
             "Erreur lors de la récupération des types de produits"
           );
         }
-        const types = await fetchAllTypes.json();
+        const types = await reponseType.json();
         setTypes(types);
       } catch (error) {
         console.error(

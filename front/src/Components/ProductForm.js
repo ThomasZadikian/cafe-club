@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BASE_API_URL } from "../Assets/constantes/constants";
+import { BASE_API_URL } from "../Assets/constantes/API_URL";
 
 const ProductForm = () => {
   const [productName, setProductName] = useState("");

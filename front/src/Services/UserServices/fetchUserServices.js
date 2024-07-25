@@ -1,4 +1,4 @@
-import { BASE_API_URL } from "../../Assets/constantes/constants";
+import { BASE_API_URL } from "../../Assets/constantes/API_URL";
 
 export default async function fetchUser(formData) {
   const username = formData.get("username");
