@@ -11,6 +11,7 @@ const products = require("./controllers/ProductsController/ProductsDisplayContro
 const insertUser = require("./controllers/UsersController/insertUserController");
 const fetchUsers = require("./controllers/UsersController/fetchUsersController");
 const fetchUser = require("./controllers/UsersController/fetchUserController");
+const fetchUserConnect = require("./controllers/UsersController/fetchUserConnect");
 
 app.use(express.json());
 app.use(cors());
@@ -24,11 +25,13 @@ app.use("/api/products", products);
 app.use("/api/users", insertUser);
 app.use("/api/users", fetchUsers);
 app.use("/api/users", fetchUser);
+app.use("/api/users", fetchUserConnect);
 
 /* initialize value for Express */
 
 app.use((res) => {
   res.status(404).json({ error: "Route not found" });
+  console.log(res);
 });
 
 const port = process.env.PORT || 8080;

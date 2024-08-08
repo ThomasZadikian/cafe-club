@@ -25,11 +25,11 @@ const Navbar = () => {
           />
         </div>
         <ul className="md:flex mb:grid mb:grid-cols-2 gap-2 bg-background-dark p-2 mx-auto md:mt-2">
-          <NavLink to={"/"} label={"Home"} />
-          <NavLink to={"/shop"} label={"Products"} />
+          <NavLink to={"/"} label={"Accueil"} />
+          <NavLink to={"/shop"} label={"Pruduits"} />
           <NavLink to={"/contact"} label={"Contact"} />
           {!user ? (
-            <NavLink to={"/create"} label={"Create"} />
+            <NavLink to={"/connect"} label={"Se connecter"} />
           ) : (
             <button
               type="button"
@@ -39,7 +39,7 @@ const Navbar = () => {
               Disconect
             </button>
           )}
-          {!user ? <NavLink to={"/connect"} label={"Connect"} /> : null}
+
           <NavLink to={"/admin"} label={"Admin"} />
         </ul>
       </nav>

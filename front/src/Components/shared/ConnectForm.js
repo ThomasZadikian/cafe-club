@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 import { connectUserService } from "../../Services/UserServices/connectUserService";
+import NavLink from "./NavLink";
 
 const ConnectForm = () => {
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [errorAppear, setErrorAppear] = useState(false);
@@ -12,7 +12,6 @@ const ConnectForm = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
     const isConnected = await connectUserService(formData);
@@ -37,19 +36,6 @@ const ConnectForm = () => {
       ) : null}
       <h2 className="text-2xl font-semibold mb-6">Connectez-vous</h2>
       <form onSubmit={handleSubmit} className="space-y-4 ">
-        <div>
-          <label className="block font-medium mb-2">
-            Votre nom / pseudonyme
-          </label>
-          <input
-            className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            pattern="^[a-zA-Z0-9À-ÿ]*$"
-          />
-        </div>
         <div>
           <label className="block font-medium mb-2">Votre adresse email</label>
           <input
@@ -77,6 +63,8 @@ const ConnectForm = () => {
         >
           Connectez-vous
         </button>
+
+        <NavLink to={"/create"} label={"Pas encore de compte ?"} />
       </form>
     </div>
   );

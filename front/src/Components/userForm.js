@@ -81,7 +81,7 @@ const UserForm = () => {
           className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full"
           type="submit"
         >
-          Ajouter l'utilisateur en base de donnée
+          Créez votre compte
         </button>
       </form>
     </div>

@@ -2,18 +2,17 @@ import { jwtDecode } from "jwt-decode";
 import { BASE_API_URL } from "../../Assets/constantes/API_URL";
 
 export const connectUserService = async (formData) => {
-  const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
   try {
-    const response = await fetch(`${BASE_API_URL}users/fetchUser`, {
+    const response = await fetch(`${BASE_API_URL}users/fetchUserConnect`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
         email: email,
+        password: password,
       }),
     });
     if (response.ok) {
