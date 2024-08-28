@@ -48,13 +48,16 @@ const ContactForm = () => {
         <p>Café club</p>
         <p>23 Rue fictive</p>
         <p>157452, Ville fictive</p>
+        <p>
+          <b>Ouvert tout les jours de 11h à 23h</b>
+        </p>
       </div>
       <div>
         <form
           onSubmit={handleSubmit}
           className="bg-dark border border-gold rounded-lg p-8 max-w-md mx-auto mt-8"
         >
-          <h2 className="my-5">
+          <h2 className="mb-5">
             Une remarque, suggestion ou recommendation ? Nous sommes toujours à
             votre écoute
           </h2>

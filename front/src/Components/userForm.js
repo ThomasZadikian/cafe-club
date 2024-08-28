@@ -22,6 +22,7 @@ const UserForm = () => {
         "Les données fournies lors de l'inscription ne sont pas correctes."
       );
     } else {
+      window.location = "/";
     }
   }
 
