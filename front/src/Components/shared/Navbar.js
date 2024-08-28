@@ -27,8 +27,8 @@ const Navbar = () => {
         </div>
         <ul className="md:flex mb:grid mb:grid-cols-2 gap-2 bg-background-dark p-2 mx-auto md:mt-2">
           <NavLink to={"/"} label={"Accueil"} />
-          <NavLink to={"/shop"} label={"Pruduits"} />
-          <NavLink to={"/contact"} label={"Contact"} />
+          <NavLink to={"/shop"} label={"Produits"} />
+          <NavLink to={"/contact"} label={"Où nous trouver"} />
           {!user ? (
             <NavLink to={"/connect"} label={"Se connecter"} />
           ) : (
