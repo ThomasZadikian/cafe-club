@@ -1,13 +1,5 @@
-Side Project for Personal Use
-
-This project is divided into two folders:
-
-1 - The "back" folder contains all the backend dependencies (node modules for Express).
-
-2 - The "front" folder contains all the dependencies for React.
-
-Within the "front" package, you will find an npm start command that launches both the Express server and the React project. Please note that this won't work until you set up the database on your localhost. This project is not really over, but it was for personnal training in Express and React.
-
-The project utilizes create-react-app and Express.js. As the database is not hosted online, its usage is restricted. However, please feel free to utilize this project as you see fit; it was developed by a junior developer.
+School project for my graduation.
 
 If you decide to clone this project, remember to run npm install in order to install the necessary dependencies.
+
+For do work this project, you need to have the secret (inside a .env) who conatins jwt key and database informations. You can craete your own, the back folders contain a copy of the deploiement script for the database and the post deploiement script (using this, you don't have images for the products, as a base x64 longchar contain, i can't and won't include them inside the post deploiement script)
