@@ -31,11 +31,8 @@ app.use("/api/users", fetchUserConnect);
 
 app.use((res) => {
   res.status(404).json({ error: "Route not found" });
-  console.log(res);
 });
 
 const port = process.env.PORT || 8080;
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(port, () => {});

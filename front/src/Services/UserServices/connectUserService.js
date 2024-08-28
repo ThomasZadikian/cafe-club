@@ -19,7 +19,6 @@ export const connectUserService = async (formData) => {
       const { token } = await response.json();
       localStorage.setItem("token", token);
       const user = jwtDecode(token);
-      console.log(user);
       return user;
     } else {
       return false;

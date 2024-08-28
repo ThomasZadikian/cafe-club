@@ -34,7 +34,6 @@ const ProductForm = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.message);
       } else {
         console.error(
           "Erreur lors de l'envoi des données :",
@@ -90,7 +89,6 @@ const ProductForm = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setProducts(data);
       })
       .catch((error) => {

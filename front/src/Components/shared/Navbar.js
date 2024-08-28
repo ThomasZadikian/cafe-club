@@ -7,7 +7,6 @@ import { logoutUserService } from "../../Services/UserServices/connectUserServic
 
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
   const disconnectUser = () => {
     logoutUserService();
     window.location = "/";

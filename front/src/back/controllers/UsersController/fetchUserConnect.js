@@ -12,7 +12,7 @@ router.post("/fetchUserConnect", async (req, res) => {
   db.execute(query, [email, password], (error, results) => {
     if (error) {
       console.error(
-        `Erreur lors de la récupération de l'utilisateur : ${username} => `,
+        `Erreur lors de la récupération de l'utilisateur : ${email} => `,
         error
       );
       res.status(500).json({

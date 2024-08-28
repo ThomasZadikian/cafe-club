@@ -7,7 +7,6 @@ const ContactForm = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("je suis un formulaire en construction");
   }
 
   return (
