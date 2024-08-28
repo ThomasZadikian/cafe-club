@@ -11,6 +11,8 @@ const Navbar = () => {
     logoutUserService();
     window.location = "/";
   };
+
+  console.log(user);
   return (
     <header className="flex justify-center">
       <nav className="md:flex flex-col md:flex-row justify-center items-center rounded-lg mt-5 border border-gold px-2 w-screen md:max-w-screen-lg">
@@ -38,8 +40,9 @@ const Navbar = () => {
               Disconect
             </button>
           )}
-
-          <NavLink to={"/admin"} label={"Admin"} />
+          {user && user.role === 1 ? (
+            <NavLink to={"/admin"} label={"Admin"} />
+          ) : null}
         </ul>
       </nav>
     </header>
