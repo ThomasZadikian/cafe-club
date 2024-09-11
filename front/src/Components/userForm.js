@@ -40,10 +40,11 @@ const UserForm = () => {
       <h2 className="text-2xl font-semibold mb-6">Créez votre compte</h2>
       <form onSubmit={handleSubmit} className="space-y-4 ">
         <div>
-          <label className="block font-medium mb-2">
+          <label for="username" className="block font-medium mb-2">
             Votre nom / pseudonyme
           </label>
           <input
+            id="username"
             className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
             type="text"
             value={username}
@@ -53,8 +54,11 @@ const UserForm = () => {
           />
         </div>
         <div>
-          <label className="block font-medium mb-2">Votre adresse email</label>
+          <label for="email" className="block font-medium mb-2">
+            Votre adresse email
+          </label>
           <input
+            id="email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             type="email"
             className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
@@ -64,10 +68,11 @@ const UserForm = () => {
           />
         </div>
         <div>
-          <label className="block font-medium mb-2">
-            Votre mot de passe (doit contenir au moins 8 caractère)
+          <label for="password" className="block font-medium mb-2">
+            Votre mot de passe
           </label>
           <input
+            id="password"
             className="w-full border-2 border-gold px-3 py-2 rounded text-gray-900"
             type="password"
             value={password}
@@ -79,7 +84,7 @@ const UserForm = () => {
           className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full"
           type="submit"
         >
-          Créez votre compte
+          Validez la création de votre compte
         </button>
       </form>
     </div>
