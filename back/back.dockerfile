@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json .
 RUN npm install 
 COPY . . 
-COPY ../.env .env
+COPY .env .env
 EXPOSE 8080
 
 CMD dockerize -wait tcp://db:3306 -timeout 20s node express.js

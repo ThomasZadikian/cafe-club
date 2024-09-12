@@ -1,7 +1,7 @@
 services:
   db:
     container_name: cafe_club_database
-    build: 
+    build:
       context: ./database
       dockerfile: ./mysql.dockerfile
     environment:
@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE: cafe_club_database
     volumes:
       - db_data:/var/lib/mysql
-    networks: 
+    networks:
       - cafe_club_network
 
   app:
@@ -21,7 +21,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
-    networks: 
+    networks:
       - cafe_club_network
 
   back:
@@ -33,13 +33,13 @@ services:
       - "8080:3001"
     depends_on:
       - db
-    env_file: 
+    env_file:
       - ./back/.env
-    networks: 
+    networks:
       - cafe_club_network
 
 volumes:
   db_data:
 
-networks: 
+networks:
   cafe_club_network:
