@@ -4,16 +4,13 @@
   "private": true,
   "dependencies": {
     "@testing-library/user-event": "^14.5.2",
-    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
     "framer-motion": "^11.2.10",
     "i18next": "^23.15.1",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.10.0",
     "promise": "^8.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -26,9 +23,8 @@
     "web-vitals": "^4.0.1"
   },
   "scripts": {
-    "start": "concurrently \"npm run tailwind:watch\" \"npm run start:client\" \"npm run start:server\"",
+    "start": "concurrently \"npm run tailwind:watch\" \"npm run start:client\"",
     "start:client": "react-scripts start",
-    "start:server": "node ./src/back/express.js",
     "build": "npm run tailwind:build && react-scripts build",
     "tailwind:build": "NODE_ENV=production npx tailwindcss build src/index.css -o src/tailwind.css",
     "tailwind:watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",

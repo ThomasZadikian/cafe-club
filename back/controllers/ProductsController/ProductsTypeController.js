@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db/db");
 
-router.get("/productsType", async (req, res) => {
+router.get("/products-type", async (req, res) => {
   const query = "SELECT * FROM product_types";
 
   db.execute(query, (error, result) => {

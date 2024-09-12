@@ -1,0 +1,45 @@
+services:
+  db:
+    container_name: cafe_club_database
+    build: 
+      context: ./database
+      dockerfile: ./mysql.dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cafe_club_database
+    volumes:
+      - db_data:/var/lib/mysql
+    networks: 
+      - cafe_club_network
+
+  app:
+    container_name: cafe_club_front
+    build:
+      context: ./front
+      dockerfile: ./app.dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks: 
+      - cafe_club_network
+
+  back:
+    container_name: cafe_club_back
+    build:
+      context: ./back
+      dockerfile: ./back.dockerfile
+    ports:
+      - "8080:3001"
+    depends_on:
+      - db
+    env_file: 
+      - ./back/.env
+    networks: 
+      - cafe_club_network
+
+volumes:
+  db_data:
+
+networks: 
+  cafe_club_network:

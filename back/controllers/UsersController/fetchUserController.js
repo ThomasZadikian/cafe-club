@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db/db");
 
-router.post("/fetchUser", async (req, res) => {
+router.post("/fetch-user", async (req, res) => {
   const { username, email } = req.body;
   const query = `
     SELECT * FROM users WHERE username = ? AND email = ?

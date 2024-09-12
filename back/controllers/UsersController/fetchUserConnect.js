@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db/db");
 
-router.post("/fetchUserConnect", async (req, res) => {
+router.post("/fetch-user-connect", async (req, res) => {
   const { password, email } = req.body;
   const query = `
     SELECT * FROM users WHERE email = ? AND password = ?

@@ -1,1 +1,29 @@
-node_modules
+# Dépendances
+**/node_modules
+/.pnp
+.pnp.js
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environnement runtime
+.env
+.env.test
+
+# Constructeur
+/dist
+
+# Dossiers de cache
+/cache
+/.next
+
+# Fichiers de configuration de l'éditeur
+/.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

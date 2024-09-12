@@ -5,7 +5,7 @@ export const connectUserService = async (formData) => {
   const email = formData.get("email");
   const password = formData.get("password");
   try {
-    const response = await fetch(`${BASE_API_URL}users/fetchUserConnect`, {
+    const response = await fetch(`${BASE_API_URL}users/fetch-user-connect`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

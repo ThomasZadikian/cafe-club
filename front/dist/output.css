@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
 
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -592,6 +592,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-5{
+  margin-bottom: 1.25rem;
+}
+
 .mb-6{
   margin-bottom: 1.5rem;
 }
@@ -614,10 +618,6 @@ video {
 
 .mt-auto{
   margin-top: auto;
-}
-
-.mb-5{
-  margin-bottom: 1.25rem;
 }
 
 .block{

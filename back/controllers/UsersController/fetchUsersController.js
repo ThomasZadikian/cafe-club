@@ -5,7 +5,7 @@ const db = require("../../db/db");
 
 const upload = multer({ dest: "../../front/src/Assets/Images" });
 
-router.get("/fetchUsers", upload.single("file"), async (req, res) => {
+router.get("/fetch-users", upload.single("file"), async (req, res) => {
   const query = `
     SELECT * FROM users 
   `;

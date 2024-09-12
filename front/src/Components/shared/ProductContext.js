@@ -15,14 +15,14 @@ export function ProductProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const reponse = await fetch(`${BASE_API_URL}products/productsDisplay`);
+        const reponse = await fetch(`${BASE_API_URL}products/products-display`);
         if (!reponse.ok) {
           throw new Error("Erreur lors de la récupération des données");
         }
         const data = await reponse.json();
         setData(data);
 
-        const reponseType = await fetch(`${BASE_API_URL}products/productsType`);
+        const reponseType = await fetch(`${BASE_API_URL}products/products-type`);
         if (!reponseType.ok) {
           throw new Error(
             "Erreur lors de la récupération des types de produits"

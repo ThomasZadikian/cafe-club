@@ -5,7 +5,7 @@ export default async function fetchUser(formData) {
   const email = formData.get("email");
   const password = formData.get("password");
   try {
-    const response = await fetch(`${BASE_API_URL}users/fetchUser`, {
+    const response = await fetch(`${BASE_API_URL}users/fetch-user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
