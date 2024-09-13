@@ -1,7 +1,7 @@
 import { React } from "react";
 import ProductsCard from "./ProductsCard";
 import { useProduct } from "./ProductContext";
-import { Product } from "../../Interface/products";
+import { Product } from "../../Interface/Products";
 
 type BestSalesProductsProps = {};
 
