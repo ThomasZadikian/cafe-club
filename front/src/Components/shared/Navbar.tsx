@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import SearchBox from "./SearchBox";
 import SearchIcon from "./SearchIcon";
 import NavLink from "./NavLink";
-import { useUser } from "./UserContext";
+import { useUser } from "../../Context/UserContext";
 import { logoutUserService } from "../../Services/UserServices/connectUserService";
 
 type NavbarProps = {};
@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               Disconnect
             </button>
           )}
-          {user && user.role === 1 ? (
+          {user && user.role_id === 1 ? (
             <NavLink to={"/admin"} label={"Admin"} />
           ) : null}
         </ul>

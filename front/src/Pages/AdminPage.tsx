@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ProductForm from "../Components/ProductForm";
+// import ProductForm from "../Components/ProductForm";
 
 type AdminPageProps = {};
 
@@ -11,7 +11,7 @@ const AdminPage: React.FC<AdminPageProps> = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <ProductForm />
+      {/* <ProductForm /> */}
     </motion.main>
   );
 };

@@ -1,7 +1,7 @@
 import { BASE_API_URL } from "../../Assets/constantes/API_URL";
 import fetchUser from "./fetchUserServices";
 
-const usernameVerification = async (formData) => {
+const usernameVerification = async (formData: FormData) => {
   const username = formData.get("username");
   const email = formData.get("email");
 
@@ -15,7 +15,7 @@ const usernameVerification = async (formData) => {
   }
 };
 
-export const insertUserVerification = async (formData) => {
+export const insertUserVerification = async (formData: FormData) => {
   const [username, email, password] = ["username", "email", "password"].map(
     (key) => formData.get(key)
   );

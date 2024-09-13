@@ -1,7 +1,8 @@
 import { jwtDecode } from "jwt-decode";
 import { BASE_API_URL } from "../../Assets/constantes/API_URL";
+import { User } from "../../Interface/User";
 
-export const connectUserService = async (formData) => {
+export const connectUserService = async (formData: FormData) => {
   const email = formData.get("email");
   const password = formData.get("password");
   try {
@@ -33,10 +34,14 @@ export const logoutUserService = () => {
   localStorage.removeItem("token");
 };
 
-export const getCurrentUser = () => {
+export const getCurrentUser = (): User | null => {
   try {
     const token = localStorage.getItem("token");
-    return jwtDecode(token);
+    if (token === null) {
+      return null;
+    } else {
+      return jwtDecode<User>(token);
+    }
   } catch (ex) {
     return null;
   }
