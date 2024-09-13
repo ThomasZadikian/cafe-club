@@ -1,17 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-import BestSalesProducts from "../Components/shared/BestSalesProducts";
+import ProductForm from "../Components/ProductForm";
 
-const HomePage = () => {
+type AdminPageProps = {};
+
+const AdminPage: React.FC<AdminPageProps> = () => {
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <BestSalesProducts />
+      <ProductForm />
     </motion.main>
   );
 };
 
-export default HomePage;
+export default AdminPage;

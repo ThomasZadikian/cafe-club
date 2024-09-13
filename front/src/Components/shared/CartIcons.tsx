@@ -1,6 +1,12 @@
 import React from "react";
 
-const CartIcons = ({ height, width, fill }) => {
+type CartIconsProps = {
+  height: string;
+  width: string;
+  fill: string;
+};
+
+const CartIcons: React.FC<CartIconsProps> = ({ height, width, fill }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

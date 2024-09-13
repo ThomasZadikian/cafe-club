@@ -2,14 +2,17 @@ import React, { useContext } from "react";
 import SearchBox from "./SearchBox";
 import SearchIcon from "./SearchIcon";
 import NavLink from "./NavLink";
-import UserContext from "./UserContext";
+import { useUser } from "./UserContext";
 import { logoutUserService } from "../../Services/UserServices/connectUserService";
 
-const Navbar = () => {
-  const { user, setUser } = useContext(UserContext);
+type NavbarProps = {};
+
+const Navbar: React.FC<NavbarProps> = () => {
+  const { user, setUser } = useUser();
+
   const disconnectUser = () => {
     logoutUserService();
-    window.location = "/";
+    window.location.href = "/";
   };
 
   console.log(user);
@@ -37,7 +40,7 @@ const Navbar = () => {
               className="bg-background-button justify-center flex items-center rounded-full text-center md:px-8 md:py-3 mb-2 py-3"
               onClick={disconnectUser}
             >
-              Disconect
+              Disconnect
             </button>
           )}
           {user && user.role === 1 ? (

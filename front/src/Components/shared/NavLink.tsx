@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
-const NavLink = ({ to, label }) => {
+type NavLinkProps = {
+  to: string;
+  label: string;
+};
+
+const NavLink: React.FC<NavLinkProps> = ({ to, label }) => {
   const isActive = window.location.pathname === to;
   return (
     <Link

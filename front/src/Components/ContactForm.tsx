@@ -1,4 +1,4 @@
-import InputForm from "./InputForm";
+import InputForm from "./InputForm.tsx";
 import React, { Component } from "react";
 import L from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";

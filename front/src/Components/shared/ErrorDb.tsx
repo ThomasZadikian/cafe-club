@@ -2,7 +2,9 @@ import React from "react";
 import { useProduct } from "./ProductContext";
 import { useTranslation } from "react-i18next";
 
-const ErrorDb = () => {
+type ErrorDbProps = {};
+
+const ErrorDb: React.FC<ErrorDbProps> = () => {
   const { t } = useTranslation("fr");
   const { errorLocal } = useProduct();
   return (

@@ -22,7 +22,9 @@ export function ProductProvider({ children }) {
         const data = await reponse.json();
         setData(data);
 
-        const reponseType = await fetch(`${BASE_API_URL}products/products-type`);
+        const reponseType = await fetch(
+          `${BASE_API_URL}products/products-type`
+        );
         if (!reponseType.ok) {
           throw new Error(
             "Erreur lors de la récupération des types de produits"

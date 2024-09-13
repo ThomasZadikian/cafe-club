@@ -1,17 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ShopCards from "../Components/shared/ShopCards";
+import BestSalesProducts from "../Components/shared/BestSalesProducts";
 
-const ShopPage = () => {
+type HomePageProps = {};
+
+const HomePage: React.FC<HomePageProps> = () => {
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <ShopCards />
+      <BestSalesProducts />
     </motion.main>
   );
 };
 
-export default ShopPage;
+export default HomePage;

@@ -1,14 +1,18 @@
 import { React } from "react";
 import ProductsCard from "./ProductsCard";
 import { useProduct } from "./ProductContext";
+import { Product } from "../../Interface/products";
 
-const BestSalesProducts = () => {
+type BestSalesProductsProps = {};
+
+const BestSalesProducts: React.FC<BestSalesProductsProps> = () => {
   const { data } = useProduct();
+  const sortedData = [...data].sort(
+    (a, b) => b.number_of_sales - a.number_of_sales
+  );
 
-  data.map((product) => {
-    data.sort((a, b) => b.number_of_sales - a.number_of_sales);
-    product.index = data.indexOf(product);
-    return product.index;
+  sortedData.forEach((product: Product, index: number) => {
+    product.index = index;
   });
 
   return (

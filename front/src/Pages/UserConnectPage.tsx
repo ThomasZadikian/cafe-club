@@ -2,7 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import ConnectForm from "../Components/shared/ConnectForm";
 
-const UserConnectPage = () => {
+type UserConnectPageProps = {};
+
+const UserConnectPage: React.FC<UserConnectPageProps> = () => {
   return (
     <motion.main
       initial={{ opacity: 0 }}

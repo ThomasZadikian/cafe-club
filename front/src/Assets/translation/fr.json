@@ -1,7 +1,0 @@
-{
-  "components": {
-    "shared": {
-      "noDataBase": "Vous utilisez une version locale de la base de données, les données pourraient ne pas correspondre parfaitement à ce qui est attendu. L'usage locale empêche également d'utiliser les comptes utilisateurs ainsi que tout le système de commande. "
-    }
-  }
-}

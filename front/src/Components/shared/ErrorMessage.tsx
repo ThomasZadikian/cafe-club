@@ -1,6 +1,11 @@
 import React from "react";
 
-const ErrorMessage = ({ message, error }) => {
+type ErrorMessageProps = {
+  message: string;
+  error: string | null;
+};
+
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ message, error }) => {
   return (
     <div
       className={`fixed top-2 right-5 bg-red-600 text-white p-5 rounded-lg 

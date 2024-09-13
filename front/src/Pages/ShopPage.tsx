@@ -1,17 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-import UserForm from "../Components/UserForm";
+import ShopCards from "../Components/shared/ShopCards";
 
-const UserCreationPage = () => {
+type ShopPageProps = {};
+
+const ShopPage: React.FC<ShopPageProps> = () => {
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <UserForm />
+      <ShopCards />
     </motion.main>
   );
 };
 
-export default UserCreationPage;
+export default ShopPage;
