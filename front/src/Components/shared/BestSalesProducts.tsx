@@ -1,13 +1,18 @@
-import { React } from "react";
+import React from "react";
 import ProductsCard from "./ProductsCard";
-import { useProduct } from "./ProductContext";
 import { Product } from "../../Interface/Products";
+import { useProduct } from "../../Context/ProductContext";
 
 type BestSalesProductsProps = {};
 
 const BestSalesProducts: React.FC<BestSalesProductsProps> = () => {
-  const { data } = useProduct();
-  const sortedData = [...data].sort(
+  const { products } = useProduct();
+
+  if (!products) {
+    return <p>Chargement...</p>;
+  }
+
+  const sortedData = [...products].sort(
     (a, b) => b.number_of_sales - a.number_of_sales
   );
 
@@ -22,7 +27,7 @@ const BestSalesProducts: React.FC<BestSalesProductsProps> = () => {
       </p>
       <ProductsCard
         type="all"
-        data={data.product ? data.products : data}
+        data={sortedData}
         imageClassName={`rounded-3xl md:w-1/3 md:h-96 w-11/12 h-64 mx-5 my-3 `}
         cardClassName={`mx-2 md:flex md:justify-center `}
       />

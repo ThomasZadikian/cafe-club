@@ -1,6 +1,12 @@
 import React from "react";
 
-const SearchIcon = ({ height, width, fill }) => {
+type SearchIconProps = {
+  height: string;
+  width: string;
+  fill: string;
+};
+
+const SearchIcon: React.FC<SearchIconProps> = ({ height, width, fill }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

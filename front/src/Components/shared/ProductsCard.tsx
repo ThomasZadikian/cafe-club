@@ -1,7 +1,21 @@
-import { React } from "react";
+import React from "react";
 import CartIcons from "./CartIcons";
+import { Product } from "../../Interface/Products";
+import { ProductType } from "../../Interface/ProductType";
 
-const ProductsCard = ({ data, imageClassName, cardClassName, type }) => {
+type ProductsCardProps = {
+  data: Product[];
+  imageClassName: string;
+  cardClassName: string;
+  type: ProductType["type_id"] | string;
+};
+
+const ProductsCard: React.FC<ProductsCardProps> = ({
+  data,
+  imageClassName,
+  cardClassName,
+  type,
+}) => {
   return (
     <>
       {data.map((product, index) => {
@@ -12,7 +26,9 @@ const ProductsCard = ({ data, imageClassName, cardClassName, type }) => {
             <div
               key={index}
               className={`${cardClassName} ${
-                product.index % 2 === 0 ? "md:flex-row-reverse" : ""
+                product.index !== undefined && product.index % 2 === 0
+                  ? "md:flex-row-reverse"
+                  : ""
               }`}
             >
               <img
@@ -21,7 +37,7 @@ const ProductsCard = ({ data, imageClassName, cardClassName, type }) => {
                 className={imageClassName}
               />
               <article
-                key={product.id}
+                key={product.id_type}
                 className="flex flex-col items-center justify-start md:w-96 md:h-96 border-2 border-gold rounded-3xl my-3 mx-5"
               >
                 <h1 className="my-3 text-xl font-bold border-b-2 border-gold p-2">

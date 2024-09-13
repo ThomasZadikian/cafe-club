@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { insertUserVerification } from "../Services/UserServices/insertUserServices";
 import ErrorMessage from "./shared/ErrorMessage";
 
-const UserForm = () => {
+type UserFormProps = {};
+
+const UserForm: React.FC<UserFormProps> = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [errorAppear, setErrorAppear] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const formData = new FormData();
     formData.append("username", username);
@@ -22,7 +24,7 @@ const UserForm = () => {
         "Les données fournies lors de l'inscription ne sont pas correctes."
       );
     } else {
-      window.location = "/";
+      window.location.href = "/";
     }
   }
 
@@ -40,7 +42,7 @@ const UserForm = () => {
       <h2 className="text-2xl font-semibold mb-6">Créez votre compte</h2>
       <form onSubmit={handleSubmit} className="space-y-4 ">
         <div>
-          <label for="username" className="block font-medium mb-2">
+          <label htmlFor="username" className="block font-medium mb-2">
             Votre nom / pseudonyme
           </label>
           <input
@@ -54,7 +56,7 @@ const UserForm = () => {
           />
         </div>
         <div>
-          <label for="email" className="block font-medium mb-2">
+          <label htmlFor="email" className="block font-medium mb-2">
             Votre adresse email
           </label>
           <input
@@ -68,7 +70,7 @@ const UserForm = () => {
           />
         </div>
         <div>
-          <label for="password" className="block font-medium mb-2">
+          <label htmlFor="password" className="block font-medium mb-2">
             Votre mot de passe
           </label>
           <input

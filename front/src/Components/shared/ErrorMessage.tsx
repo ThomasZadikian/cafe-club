@@ -2,7 +2,7 @@ import React from "react";
 
 type ErrorMessageProps = {
   message: string;
-  error: string | null;
+  error: boolean | null;
 };
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ message, error }) => {

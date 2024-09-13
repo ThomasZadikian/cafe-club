@@ -11,7 +11,9 @@ import AdminPage from "../Pages/AdminPage";
 import UserCreationPage from "../Pages/UserCreationPage";
 import UserConnectPage from "../Pages/UserConnectPage";
 
-const AnimatedRoutes = () => {
+type AnimatedRoutesProps = {};
+
+const AnimatedRoutes: React.FC<AnimatedRoutesProps> = () => {
   const location = useLocation();
   return (
     <>

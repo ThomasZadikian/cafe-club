@@ -1,6 +1,11 @@
 import React from "react";
 
-const SearchBox = ({ className, placeholder }) => {
+type SearchBoxProps = {
+  className: string;
+  placeholder: string;
+};
+
+const SearchBox: React.FC<SearchBoxProps> = ({ className, placeholder }) => {
   return (
     <input
       type="text"
