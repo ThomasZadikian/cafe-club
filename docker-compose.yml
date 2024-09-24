@@ -7,6 +7,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: cafe_club_database
+    image: thomaszadikian/cafe_club:cafe_club_database
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -17,6 +18,7 @@ services:
     build:
       context: ./front
       dockerfile: ./app.dockerfile
+    image: thomaszadikian/cafe_club:cafe_club_front
     ports:
       - "3000:3000"
     depends_on:
@@ -29,6 +31,7 @@ services:
     build:
       context: ./back
       dockerfile: ./back.dockerfile
+    image: thomaszadikian/cafe_club:cafe_club_back
     ports:
       - "8080:3001"
     depends_on:

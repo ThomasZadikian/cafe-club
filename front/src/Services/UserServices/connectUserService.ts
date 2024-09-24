@@ -2,9 +2,12 @@ import { jwtDecode } from "jwt-decode";
 import { BASE_API_URL } from "../../Assets/constantes/API_URL";
 import { User } from "../../Interface/User";
 
+
 export const connectUserService = async (formData: FormData) => {
+
   const email = formData.get("email");
   const password = formData.get("password");
+  console.log("je suis avant le try")
   try {
     const response = await fetch(`${BASE_API_URL}users/fetch-user-connect`, {
       method: "POST",
@@ -17,15 +20,19 @@ export const connectUserService = async (formData: FormData) => {
       }),
     });
     if (response.ok) {
-      const { token } = await response.json();
-      localStorage.setItem("token", token);
-      const decodedToken = jwtDecode(token);
-      const user = decodedToken;
+      const { result } = await response.json();
+      localStorage.setItem("token", result.token);
+      // const decodedToken = jwtDecode(result.token);
+      const user = result;
       return user;
     } else {
+      console.log("je suis le premier false")
+
       return false;
     }
   } catch (error) {
+    console.log("je suis le false du catch")
+
     return false;
   }
 };

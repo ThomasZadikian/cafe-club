@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 import { connectUserService } from "../../Services/UserServices/connectUserService";
 import NavLink from "./NavLink";
+import { useUser } from "../../Context/UserContext";
+
 
 type ConnectFormProps = {};
 
@@ -10,17 +12,21 @@ const ConnectForm: React.FC<ConnectFormProps> = () => {
   const [email, setEmail] = useState("");
   const [errorAppear, setErrorAppear] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { user, setUser } = useUser();
+
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
-    const isConnected = await connectUserService(formData);
-    if (!isConnected) {
+    const user = await connectUserService(formData);
+    console.log(user); 
+    if (!user) {
       setErrorAppear(true);
       setErrorMessage("Utilisateur introuvable ou mot de passe incorect");
     } else {
+      setUser(user.user);
       window.location.href = "/";
     }
   }

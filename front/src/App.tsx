@@ -7,13 +7,13 @@ import { ProductProvider } from "./Context/ProductContext";
 
 const App = () => {
   return (
+  <UserProvider>
     <ProductProvider>
       <Router>
-        <UserProvider>
-          <AnimatedRoutes />
-        </UserProvider>
+        <AnimatedRoutes />
       </Router>
     </ProductProvider>
+  </UserProvider>
   );
 };
 

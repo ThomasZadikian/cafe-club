@@ -1,8 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const db = require("../../db/db");
+import express, { Request, Response } from "express";
+import db from "../../db/db";
 
-router.post("/insert", async (req, res) => {
+const router = express.Router();
+
+router.post("/insert", async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
   const query = `
     INSERT INTO users (username, email, password, role_id) 
@@ -25,4 +26,4 @@ router.post("/insert", async (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

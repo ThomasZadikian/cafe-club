@@ -1,7 +1,7 @@
 import { BASE_API_URL } from "../../Assets/constantes/API_URL";
 
 export default async function fetchUser(formData: FormData) {
-  const username = formData.get("username");
+  const username = formData.get("username"); 
   const email = formData.get("email");
   const password = formData.get("password");
   try {
