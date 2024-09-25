@@ -54,4 +54,4 @@ router.get("/fetch-user-from-token", async (req: Request, res: Response) => {
   }
 });
 
-module.exports = router;
+export default router;

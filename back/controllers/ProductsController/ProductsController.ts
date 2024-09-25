@@ -1,8 +1,10 @@
-const express = require("express");
-const router = express.Router();
-const db = require("../../db/db");
+import express, { Request, Response } from "express";
+import db from "../../db/db";
+import { QueryError, QueryResult, FieldPacket } from "mysql2";
 
-router.post("/insert", async (req, res) => {
+const router = express.Router();
+
+router.post("/insert", async (req: Request, res: Response) => {
   const { productName, description, price, origin, typeId } = req.body;
 
   const query = `
@@ -13,7 +15,7 @@ router.post("/insert", async (req, res) => {
   db.execute(
     query,
     [productName, description, price, origin, typeId],
-    (error, results) => {
+    (error: QueryError | null, results: QueryResult) => {
       if (error) {
         console.error("Erreur lors de l'insertion du produit", error);
         res.status(500).json({
@@ -26,4 +28,4 @@ router.post("/insert", async (req, res) => {
   );
 });
 
-module.exports = router;
+export default router;
