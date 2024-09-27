@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import { User, UserContextType } from "../Interface/User";
-import fetchUserWithJwt from "../Services/UserServices/ftechUserWithJwt";
+import fetchUserWithJwt from "../Services/UserServices/fetchUserWithJwt";
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 

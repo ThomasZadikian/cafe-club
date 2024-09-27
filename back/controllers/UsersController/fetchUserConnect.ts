@@ -20,7 +20,7 @@ router.post("/fetch-user-connect", async (req: Request, res: Response) => {
       (
         error: QueryError | null,
         results: RowDataPacket[],
-        fields: FieldPacket[]
+        _fields: FieldPacket[]
       ) => {
         if (error) {
           console.error(
@@ -41,7 +41,7 @@ router.post("/fetch-user-connect", async (req: Request, res: Response) => {
                 email: user.email,
                 role: user.role_id,
               },
-              process.env.JWT_SECRET
+              process.env.JWT_SECRET as jwt.Secret ?? ''
             );
             const result = {
               token: token,

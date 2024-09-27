@@ -14,8 +14,6 @@ const Navbar: React.FC<NavbarProps> = () => {
     logoutUserService();
     window.location.href = "/";
   };
-
-  console.log(user);
   return (
     <header className="flex justify-center">
       <nav className="md:flex flex-col md:flex-row justify-center items-center rounded-lg mt-5 border border-gold px-2 w-screen md:max-w-screen-lg">

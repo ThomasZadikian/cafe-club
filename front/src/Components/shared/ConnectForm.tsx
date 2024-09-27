@@ -21,7 +21,6 @@ const ConnectForm: React.FC<ConnectFormProps> = () => {
     formData.append("email", email);
     formData.append("password", password);
     const user = await connectUserService(formData);
-    console.log(user); 
     if (!user) {
       setErrorAppear(true);
       setErrorMessage("Utilisateur introuvable ou mot de passe incorect");

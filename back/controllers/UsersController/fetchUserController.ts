@@ -17,7 +17,7 @@ router.post("/fetch-user", async (req: Request, res: Response) => {
     (
       error: QueryError | null,
       results: RowDataPacket[],
-      fields: FieldPacket[]
+      _fields: FieldPacket[]
     ) => {
       if (error) {
         console.error(

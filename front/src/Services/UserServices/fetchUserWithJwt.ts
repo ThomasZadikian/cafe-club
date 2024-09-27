@@ -9,6 +9,7 @@ export default async function fetchUserWithJwt(jwt: string) {
         },
       });
       if (!response.ok) {
+        console.log(response); 
         throw new Error('Failed to fetch user');
       }
       const user = await response.json();

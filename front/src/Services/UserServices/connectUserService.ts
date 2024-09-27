@@ -7,7 +7,6 @@ export const connectUserService = async (formData: FormData) => {
 
   const email = formData.get("email");
   const password = formData.get("password");
-  console.log("je suis avant le try")
   try {
     const response = await fetch(`${BASE_API_URL}users/fetch-user-connect`, {
       method: "POST",
@@ -26,13 +25,9 @@ export const connectUserService = async (formData: FormData) => {
       const user = result;
       return user;
     } else {
-      console.log("je suis le premier false")
-
       return false;
     }
   } catch (error) {
-    console.log("je suis le false du catch")
-
     return false;
   }
 };
