@@ -44,7 +44,7 @@
     "build": "npm run tailwind:build && react-scripts build",
     "tailwind:build": "NODE_ENV=production npx tailwindcss build src/index.css -o src/tailwind.css",
     "tailwind:watch": "npx tailwindcss -i ./src/input.css -o ./src/dist/output.css --watch",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

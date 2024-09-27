@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
+import React, { createContext, useState, useContext, ReactNode, useEffect, useMemo } from "react";
 import { User, UserContextType } from "../Interface/User";
 import fetchUserWithJwt from "../Services/UserServices/fetchUserWithJwt";
 
@@ -8,6 +8,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
+  const userMemo = useMemo(() => ({user, setUser}), [user, setUser])
 
   useEffect(() => {
     const jwt = localStorage.getItem('token');
@@ -22,7 +23,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={userMemo}>
       {children}
     </UserContext.Provider>
   );

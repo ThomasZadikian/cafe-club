@@ -3,7 +3,7 @@ import React from "react";
 import userEvent from "@testing-library/user-event";
 import UserForm from "../../Components/UserForm";
 import { insertUserVerification } from "../../Services/UserServices/insertUserServices";
-import { User } from "../../Interface/User";
+import jestConfig from "../../../../jest.config";
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -30,7 +30,7 @@ global.fetch = jest.fn(() =>
     blob: jest.fn(),
     formData: jest.fn(),
     text: jest.fn(),
-  } as Response)
+  })
 );
 
 test("form should have the wright value", () => {

@@ -17,6 +17,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "noImplicitAny": false,
+    "types": ["jest"]
   },
   "include": ["src/**/*.ts", "declaration.d.ts"]
 }
