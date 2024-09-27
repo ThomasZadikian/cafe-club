@@ -4,12 +4,12 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import InputForm from "./InputForm";
 
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
+const DefaultIcon = L.icon({
+  iconUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>',
+  iconSize: [35, 51],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  className: 'my-custom-icon'
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
@@ -29,7 +29,7 @@ const ContactForm: React.FC = () => {
       <div className="bg-dark border border-gold rounded-lg p-8 max-w-md mx-auto mt-8">
         <h2>Nous sommes ici : (position fictive)</h2>
         <div>
-          {/* <MapContainer
+          <MapContainer
             center={position}
             zoom={25}
             style={{ width: "100%", height: "calc(50vh - 4rem)" }}
@@ -43,7 +43,7 @@ const ContactForm: React.FC = () => {
                 <p>Votre café club préféré</p>
               </Popup>
             </Marker>
-          </MapContainer> */}
+          </MapContainer> 
         </div>
         <p>Café club</p>
         <p>23 Rue fictive</p>
