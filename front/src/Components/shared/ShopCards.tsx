@@ -29,7 +29,7 @@ const ShopCards: React.FC<ShopCardsProps> = () => {
             <ProductsCard
               type={type.type_id}
               data={products}
-              imageClassName={`rounded-3xl h-64 w-96 mx-auto my-3 `}
+              imageClassName={`rounded-3xl h-64 w-96 mx-auto my-3`}
               cardClassName="flex flex-col mx-2"
             />
           </article>

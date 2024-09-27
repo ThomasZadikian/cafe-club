@@ -25,11 +25,7 @@ const ProductsCard: React.FC<ProductsCardProps> = ({
           return (
             <div
               key={index}
-              className={`${cardClassName} ${
-                product.index !== undefined && product.index % 2 === 0
-                  ? "md:flex-row-reverse"
-                  : ""
-              }`}
+              className={`${cardClassName}`}
             >
               <img
                 src={product.image}

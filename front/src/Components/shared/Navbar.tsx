@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               className="bg-background-button justify-center flex items-center rounded-full text-center md:px-8 md:py-3 mb-2 py-3"
               onClick={disconnectUser}
             >
-              Disconnect
+              Déconnexion
             </button>
           )}
           {user && user.role_id === 1 ? (
